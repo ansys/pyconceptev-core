@@ -42,7 +42,7 @@ sphinx-copybutton = "^0.5.1"
 [tool.poetry.group.tests]
 optional = true
 [tool.poetry.group.tests.dependencies]
-pytest = "^7.3.0"
+pytest = "^8.1.1"
 pytest-cov = "^4.0.0"
 pytest-httpx = "^0.29.0"
 pytest-mock = "^3.12.0"
