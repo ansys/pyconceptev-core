@@ -70,7 +70,7 @@ jobs:
           OCM_URL: ${{ vars.OCM_URL }}
           POETRY_VIRTUALENVS_CREATE: ${{ vars.POETRY_VIRTUALENVS_CREATE }}
         with:
-          pytest-extra-args: "--cov=ansys --cov-report=term --cov-report=html:.cov/html"
+          pytest-extra-args: "-m not integration --cov=ansys --cov-report=term --cov-report=html:.cov/html"
 
 
   doc-build:

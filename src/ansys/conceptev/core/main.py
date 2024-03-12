@@ -2,16 +2,12 @@
 import datetime
 from json import JSONDecodeError
 import os
-from pathlib import Path
 import time
 from typing import Literal
 import warnings
 
 import dotenv
 import httpx
-import plotly.graph_objects as go
-
-DATADIR = Path(__file__).parents[0]
 
 dotenv.load_dotenv()
 
@@ -77,7 +73,7 @@ def processed_response(response) -> dict:
             return response.json()
         except JSONDecodeError:
             return response.content
-    raise Exception(f"Response Failed:{response}")
+    raise Exception(f"Response Failed:{response.content}")
 
 
 def get(
@@ -137,9 +133,16 @@ def create_new_project(
     if created_project.status_code != 200 and created_project.status_code != 204:
         raise Exception(f"Failed to create a project on OCM {created_project}")
 
+    product_ids = httpx.get(osm_url + "/product/list", headers={"Authorization": token})
+    product_id = [
+        product["productId"]
+        for product in product_ids.json()
+        if product["productName"] == "CONCEPTEV"
+    ][0]
+
     design_data = {
         "projectId": created_project.json()["projectId"],
-        "productId": "ec987729-a125-4f9d-ae3f-c3a81ca75112",
+        "productId": product_id,
         "designTitle": "Branch 1",
     }
     created_design = httpx.post(
@@ -147,7 +150,7 @@ def create_new_project(
     )
 
     if created_design.status_code != 200 and created_design.status_code != 204:
-        raise Exception(f"Failed to create a design on OCM {created_design}")
+        raise Exception(f"Failed to create a design on OCM {created_design.content}")
 
     user_details = httpx.post(osm_url + "/user/details", headers={"Authorization": token})
     if user_details.status_code != 200 and user_details.status_code != 204:
@@ -246,10 +249,12 @@ def read_file(filename: str) -> str:
     return content
 
 
-def read_results(client, job_info: dict, no_of_tries: int = 100, rate_limit: float = 0.3) -> dict:
+def read_results(client, job_info: dict, no_of_tries: int = 200, rate_limit: float = 0.3) -> dict:
     """Keep trying for results if the results aren't completed try again."""
     for i in range(0, no_of_tries):
-        response = client.post(url="/jobs:result", json=job_info)
+        response = client.post(
+            url="/jobs:result", json=job_info, params={"results_file_name": "output.json"}
+        )
         time.sleep(rate_limit)
         if response.status_code == 200:
             return response.json()
@@ -257,69 +262,19 @@ def read_results(client, job_info: dict, no_of_tries: int = 100, rate_limit: flo
     raise Exception(f"To many request: {response}")
 
 
-def post_file(client: httpx.Client, router: Router, filename: str, params: dict) -> dict:
+def post_component_file(client: httpx.Client, filename: str, component_file_type: str) -> dict:
     """Post/create from the client at the specific route with a file.
 
     A http verb. Performs the post request adding the route to the base client.
     Adds the file as a multipart form request.
     """
-    path = ":".join([router, "from_file"])
+    path = "/components:upload"
     file_contents = read_file(filename)
-    response = client.post(url=path, files={"file": file_contents}, params=params)
+    response = client.post(
+        url=path, files={"file": file_contents}, params={"component_file_type": component_file_type}
+    )
     return processed_response(response)
 
-
-# Example data can be got from the schema sections of the api docs.
-
-aero = {
-    "name": "New Aero Config",
-    "drag_coefficient": 0.3,
-    "cross_sectional_area": 2,
-    "config_type": "aero",
-}
-
-aero2 = {
-    "name": "Second Aero Configuration",
-    "drag_coefficient": 0.6,
-    "cross_sectional_area": 3,
-    "config_type": "aero",
-}
-mass = {
-    "name": "New Mass Config",
-    "mass": 3000,
-    "config_type": "mass",
-}
-
-wheel = {
-    "name": "New Wheel Config",
-    "rolling_radius": 0.3,
-    "config_type": "wheel",
-}
-
-transmission = {
-    "gear_ratios": [5],
-    "headline_efficiencies": [0.95],
-    "max_torque": 500,
-    "max_speed": 2000,
-    "static_drags": [0.5],
-    "friction_ratios": [60],
-    "windage_ratios": [40],
-    "component_type": "TransmissionLossCoefficients",
-}
-
-motor_file_name = str(DATADIR.joinpath("e9.lab"))
-motor_params = {"component_name": "e9", "component_file_type": "motor_lab_file"}
-
-battery = {
-    "capacity": 86400000,
-    "charge_acceptance_limit": 0,
-    "component_type": "BatteryFixedVoltages",
-    "internal_resistance": 0.1,
-    "name": "New Battery",
-    "voltage_max": 400,
-    "voltage_mid": 350,
-    "voltage_min": 300,
-}
 
 if __name__ == "__main__":
     token = get_token()
@@ -329,91 +284,3 @@ if __name__ == "__main__":
         print(health)
         concepts = get(client, "/concepts")  # Get a list of concepts
         print(concepts)
-
-        accounts = get_account_ids(token)
-        account_id = accounts["conceptev_saas@ansys.com"]
-        hpc_id = get_default_hpc(token, account_id)
-        created_concept = create_new_project(
-            client, account_id, hpc_id, f"New Project +{datetime.datetime.now()}"
-        )  # Create a new concept.
-
-    concept_id = created_concept["id"]  # get the id of the newly created concept.
-    design_instance_id = created_concept["design_instance_id"]
-    with get_http_client(token, concept_id) as client:  # get client with concept id embedded in
-        ### Basic Post(create) and get(read) operations on Configurations
-        created_aero = post(client, "/configurations", data=aero)  # create an aero
-        created_aero2 = post(client, "/configurations", data=aero2)  # create an aero
-        created_mass = post(client, "/configurations", data=mass)
-        created_wheel = post(client, "/configurations", data=wheel)
-
-        configurations = get(
-            client, "/configurations", params={"config_type": "aero"}
-        )  # read all aeros
-        print(configurations)
-
-        aero = get(
-            client, "/configurations", id=created_aero["id"]
-        )  # get a particular aero configuration
-        print(aero)
-
-        ### Create Components
-        created_transmission = post(client, "/components", data=transmission)  # create transmission
-
-        created_motor = post_file(
-            client, "/components", motor_file_name, params=motor_params  # create motor from file
-        )
-        print(created_motor)
-        client.timeout = 2000  # Needed as these calculations will take a long time.
-        motor_loss_map = post(
-            client,
-            "/components:calculate_loss_map",
-            data={},
-            params={"component_id": created_motor["id"]},
-        )  # get loss map from motor
-
-        x = motor_loss_map["currents"]
-        y = motor_loss_map["phase_advances"]
-        z = motor_loss_map["losses_total"]
-        fig = go.Figure(data=go.Contour(x=x, y=y, z=z))
-        fig.show()
-
-        created_battery = post(client, "/components", data=battery)  # create battery
-
-        ### Architecture
-        architecture = {
-            "number_of_front_wheels": 1,
-            "number_of_front_motors": 1,
-            "front_transmission_id": created_transmission["id"],
-            "front_motor_id": created_motor["id"],
-            "number_of_rear_wheels": 0,
-            "number_of_rear_motors": 0,
-            "battery_id": created_battery["id"],
-        }
-        created_arch = post(client, "/architectures", data=architecture)  # create arch
-
-        # Requirements
-        requirement = {
-            "speed": 10,
-            "acceleration": 1,
-            "aero_id": created_aero["id"],
-            "mass_id": created_mass["id"],
-            "wheel_id": created_wheel["id"],
-            "state_of_charge": 0.9,
-            "requirement_type": "static_acceleration",
-            "name": "Static Requirement 1",
-        }
-        created_requirement = post(client, "requirements", data=requirement)
-
-        ### Submit job
-        concept = get(client, "/concepts", id=design_instance_id, params={"populated": True})
-
-        job_info = create_submit_job(client, concept, account_id, hpc_id)
-
-        ### Read results
-        results = read_results(client, job_info)
-        x = results[0]["capability_curve"]["speeds"]
-        y = results[0]["capability_curve"]["torques"]
-
-        time.sleep(120)  # Wait for the job to complete.
-        fig = go.Figure(data=go.Scatter(x=x, y=y))
-        fig.show()

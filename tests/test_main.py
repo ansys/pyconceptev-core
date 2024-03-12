@@ -292,5 +292,5 @@ def test_post_file(mocker, httpx_mock: HTTPXMock, client: httpx.Client):
         json=file_post_response_data,
     )
 
-    result = main.post_file(client, "/configurations", filename, params)
+    result = main.post_component_file(client, "/configurations", filename, params)
     assert result == file_post_response_data
