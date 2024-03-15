@@ -105,12 +105,14 @@ def test_create_new_project(httpx_mock: HTTPXMock, client: httpx.Client):
     hpc_id = "hpc_id_123"
     user_id = "user_id_123"
     title = "Testing Title"
+    product_id = "123"
     mocked_concept = {"name": "new_mocked_concept"}
     mocked_project = {"projectId": project_id}
     mocked_design = {
         "designId": design_id,
         "designInstanceList": [{"designInstanceId": design_instance_id}],
         "projectId": project_id,
+        "productId": product_id,
     }
     mocked_user = {"userId": user_id}
     project_data = {
@@ -124,9 +126,15 @@ def test_create_new_project(httpx_mock: HTTPXMock, client: httpx.Client):
         url=f"{ocm_url}/project/create", method="post", match_json=project_data, json=mocked_project
     )
 
+    httpx_mock.add_response(
+        url=f"{ocm_url}/product/list",
+        method="get",
+        json=[{"productId": product_id, "productName": "CONCEPTEV"}],
+    )
+
     design_data = {
         "projectId": project_id,
-        "productId": "ec987729-a125-4f9d-ae3f-c3a81ca75112",
+        "productId": product_id,
         "designTitle": "Branch 1",
     }
     httpx_mock.add_response(
@@ -269,7 +277,7 @@ def test_read_results(httpx_mock: HTTPXMock, client: httpx.Client):
     example_job_info = {"job": "mocked_job"}
     example_results = {"results": "returned"}
     httpx_mock.add_response(
-        url=f"{conceptev_url}/jobs:result?design_instance_id=123",
+        url=f"{conceptev_url}/jobs:result?design_instance_id=123&results_file_name=output.json",
         method="post",
         match_json=example_job_info,
         json=example_results,
@@ -281,16 +289,18 @@ def test_read_results(httpx_mock: HTTPXMock, client: httpx.Client):
 def test_post_file(mocker, httpx_mock: HTTPXMock, client: httpx.Client):
     file_data = "Simple Data"
     file_post_response_data = {"file": "read"}
+    component_file_type = "File Type"
     mocked_file_data = mocker.mock_open(read_data=file_data)
+
     mocker.patch("builtins.open", mocked_file_data)
 
     filename = "filename"
-    params = {"param1": "one"}
     httpx_mock.add_response(
-        url=f"{conceptev_url}/configurations:from_file?design_instance_id=123&param1=one",
+        url=f"{conceptev_url}/components:upload?design_instance_id=123"
+        f"&component_file_type={component_file_type}",
         method="post",
         json=file_post_response_data,
     )
 
-    result = main.post_component_file(client, "/configurations", filename, params)
+    result = main.post_component_file(client, filename, component_file_type)
     assert result == file_post_response_data
