@@ -62,7 +62,7 @@ jobs:
        python-version: ["3.9","3.10","3.11"]
       fail-fast: false
     steps:
-      - uses: ansys/actions/tests-pytest@feat/tests-code-style-poetry-adapting
+      - uses: ansys/actions/tests-pytest@v5
         env:
           CONCEPTEV_PASSWORD: ${{ secrets.CONCEPTEV_PASSWORD }}
           CONCEPTEV_URL: ${{ vars.CONCEPTEV_URL }}
