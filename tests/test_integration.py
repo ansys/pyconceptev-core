@@ -66,30 +66,30 @@ battery = {
     "voltage_min": 300,
 }
 
-environments = {
-    "dev": {
-        "CONCEPTEV_URL": "https://dev-conceptev.awsansys3np.onscale.com/api/",
-        "OCM_URL": "https://test.portal.onscale.com/api",
-        "CONCEPTEV_USERNAME": "philip.usher@ansys.com",
-        "CONCEPTEV_PASSWORD": os.environ["CONCEPTEV_PASSWORD_DEV"],
-    },
-    # OCM Test = ConceptEV Dev
-    "test": {
-        "CONCEPTEV_URL": "https://test-conceptev.awsansys3np.onscale.com/api/",
-        "OCM_URL": "https://dev.portal.onscale.com/api",
-        "CONCEPTEV_USERNAME": "philip.usher@ansys.com",
-        "CONCEPTEV_PASSWORD": os.environ["CONCEPTEV_PASSWORD_TEST"],
-    },
-    "prod": {
-        "CONCEPTEV_URL": "https://conceptev.ansys.com/api/",
-        "OCM_URL": "https://prod.portal.onscale.com/api",
-        "CONCEPTEV_USERNAME": "philip.usher@ansys.com",
-        "CONCEPTEV_PASSWORD": os.environ["CONCEPTEV_PASSWORD_PROD"],
-    },
-}
-
 
 def set_env(env):
+    environments = {
+        "dev": {
+            "CONCEPTEV_URL": "https://dev-conceptev.awsansys3np.onscale.com/api/",
+            "OCM_URL": "https://test.portal.onscale.com/api",
+            "CONCEPTEV_USERNAME": "philip.usher@ansys.com",
+            "CONCEPTEV_PASSWORD": os.environ["CONCEPTEV_PASSWORD_DEV"],
+        },
+        # OCM Test = ConceptEV Dev
+        "test": {
+            "CONCEPTEV_URL": "https://test-conceptev.awsansys3np.onscale.com/api/",
+            "OCM_URL": "https://dev.portal.onscale.com/api",
+            "CONCEPTEV_USERNAME": "philip.usher@ansys.com",
+            "CONCEPTEV_PASSWORD": os.environ["CONCEPTEV_PASSWORD_TEST"],
+        },
+        "prod": {
+            "CONCEPTEV_URL": "https://conceptev.ansys.com/api/",
+            "OCM_URL": "https://prod.portal.onscale.com/api",
+            "CONCEPTEV_USERNAME": "philip.usher@ansys.com",
+            "CONCEPTEV_PASSWORD": os.environ["CONCEPTEV_PASSWORD_PROD"],
+        },
+    }
+
     config = environments[env]
     os.environ["CONCEPTEV_USERNAME"] = config["CONCEPTEV_USERNAME"]
     os.environ["CONCEPTEV_URL"] = config["CONCEPTEV_URL"]
