@@ -33,6 +33,7 @@ Router = Literal[
     "/drive_cycles",
     "/drive_cycles:from_file",
     "/health",
+    "/utilities:data_format_version",
 ]
 
 
@@ -249,11 +250,23 @@ def read_file(filename: str) -> str:
     return content
 
 
-def read_results(client, job_info: dict, no_of_tries: int = 200, rate_limit: float = 0.3) -> dict:
+def read_results(
+    client,
+    job_info: dict,
+    calculate_units: bool = True,
+    no_of_tries: int = 200,
+    rate_limit: float = 0.3,
+) -> dict:
     """Keep trying for results if the results aren't completed try again."""
+    version_number = get(client, "/utilities:data_format_version")
     for i in range(0, no_of_tries):
         response = client.post(
-            url="/jobs:result", json=job_info, params={"results_file_name": "output.json"}
+            url="/jobs:result",
+            json=job_info,
+            params={
+                "results_file_name": f"output_file_v{version_number}.json",
+                "calculate_units": calculate_units,
+            },
         )
         time.sleep(rate_limit)
         if response.status_code == 200:

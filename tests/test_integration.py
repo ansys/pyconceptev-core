@@ -199,11 +199,10 @@ def test_happy_path(env):
 
         job_info = main.create_submit_job(client, concept, account_id, hpc_id)
 
-        ### Read results needs an api update
-        # results = main.read_results(client, job_info)
-        # x = results[0]["capability_curve"]["speeds"]
-        # y = results[0]["capability_curve"]["torques"]
-        #
-        # time.sleep(120)  # Wait for the job to complete.
-        # fig = go.Figure(data=go.Scatter(x=x, y=y))
-        # fig.show()
+        ## Read results needs an api update
+        results = main.read_results(client, job_info, calculate_units=False)
+        x = results[0]["capability_curve"]["speeds"]
+        y = results[0]["capability_curve"]["torques"]
+
+        fig = go.Figure(data=go.Scatter(x=x, y=y))
+        fig.show()
