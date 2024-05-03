@@ -1,10 +1,32 @@
+# Copyright (C) 2023 - 2024 ANSYS, Inc. and/or its affiliates.
+# SPDX-License-Identifier: MIT
+#
+#
+# Permission is hereby granted, free of charge, to any person obtaining a copy
+# of this software and associated documentation files (the "Software"), to deal
+# in the Software without restriction, including without limitation the rights
+# to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+# copies of the Software, and to permit persons to whom the Software is
+# furnished to do so, subject to the following conditions:
+#
+# The above copyright notice and this permission notice shall be included in all
+# copies or substantial portions of the Software.
+#
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+# IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+# FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+# AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+# LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+# OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+# SOFTWARE.
+
 import os
 
 import httpx
 import pytest
 from pytest_httpx import HTTPXMock
 
-from ansys.conceptev.core import main
+from ansys.conceptev.core import app
 
 conceptev_url = os.environ["CONCEPTEV_URL"]
 ocm_url = os.environ["OCM_URL"]
@@ -18,7 +40,7 @@ def test_get_token(httpx_mock: HTTPXMock):
     httpx_mock.add_response(
         url=f"{ocm_url}/auth/login/", method="post", json={"accessToken": fake_token}
     )
-    token = main.get_token()
+    token = app.get_token()
     assert token == fake_token
 
 
@@ -26,30 +48,30 @@ def test_get_token(httpx_mock: HTTPXMock):
 def client():
     fake_token = "value1"
     design_instance_id = "123"
-    client = main.get_http_client(fake_token, design_instance_id=design_instance_id)
+    client = app.get_http_client(fake_token, design_instance_id=design_instance_id)
     return client
 
 
 def test_get_http_client():
     fake_token = "value1"
     design_instance_id = "123"
-    client = main.get_http_client(fake_token, design_instance_id=design_instance_id)
+    client = app.get_http_client(fake_token, design_instance_id=design_instance_id)
     assert isinstance(client, httpx.Client)
     assert client.headers["authorization"] == fake_token
     assert str(client.base_url).strip("/") == os.environ["CONCEPTEV_URL"].strip("/")
     assert client.params["design_instance_id"] == design_instance_id
 
 
-def test_processed_response():
+def test_process_response():
     fake_response = httpx.Response(status_code=200, content='{"hello":"again"}')
-    content = main.processed_response(fake_response)
+    content = app.process_response(fake_response)
     assert content == fake_response.json()
     fake_str_response = httpx.Response(status_code=200, content="hello")
-    content = main.processed_response(fake_str_response)
+    content = app.process_response(fake_str_response)
     assert content == fake_str_response.content
     fake_failure = httpx.Response(status_code=400, content='{"hello":"again"}')
     with pytest.raises(Exception) as e:
-        content = main.processed_response(fake_failure)
+        content = app.process_response(fake_failure)
     assert e.value.args[0].startswith("Response Failed:")
 
 
@@ -61,7 +83,7 @@ def test_get(httpx_mock: HTTPXMock, client: httpx.Client):
         json=example_results,
     )
 
-    results = main.get(client, "/configurations")
+    results = app.get(client, "/configurations")
     assert results == example_results
 
 
@@ -74,7 +96,7 @@ def test_post(httpx_mock: HTTPXMock, client: httpx.Client):
         json=example_aero,
     )
 
-    results = main.post(client, "/configurations", example_aero)
+    results = app.post(client, "/configurations", example_aero)
     assert results == example_aero
 
 
@@ -90,9 +112,9 @@ def test_delete(httpx_mock: HTTPXMock, client: httpx.Client):
         status_code=404,
     )
 
-    main.delete(client, "/configurations", "456")
+    app.delete(client, "/configurations", "456")
     with pytest.raises(Exception) as e:
-        main.delete(client, "/configurations", "489")
+        app.delete(client, "/configurations", "489")
     assert e.value.args[0].startswith("Failed to delete from")
 
 
@@ -161,7 +183,7 @@ def test_create_new_project(httpx_mock: HTTPXMock, client: httpx.Client):
         match_json=concept_data,
         json=mocked_concept,
     )
-    value = main.create_new_project(client, account_id, hpc_id, title)
+    value = app.create_new_project(client, account_id, hpc_id, title)
     assert value == mocked_concept
 
 
@@ -173,7 +195,7 @@ def test_get_concept_ids(httpx_mock: HTTPXMock, client: httpx.Client):
         {"name": "end", "id": "ragnorok"},
     ]
     httpx_mock.add_response(url=f"{conceptev_url}/concepts", method="get", json=mocked_concepts)
-    returned_concepts = main.get_concept_ids(client)
+    returned_concepts = app.get_concept_ids(client)
     for concept in mocked_concepts:
         assert returned_concepts[concept["name"]] == concept["id"]
 
@@ -191,7 +213,7 @@ def test_get_account_ids(httpx_mock: HTTPXMock):
         json=mocked_accounts,
         status_code=200,
     )
-    returned_account = main.get_account_ids(token)
+    returned_account = app.get_account_ids(token)
     for account in mocked_accounts:
         assert (
             returned_account[account["account"]["accountName"]] == account["account"]["accountId"]
@@ -210,7 +232,7 @@ def test_get_default_hpc(httpx_mock: HTTPXMock):
         json=mocked_hpc,
         status_code=200,
     )
-    hpc_id = main.get_default_hpc(token, mocked_account["accountId"])
+    hpc_id = app.get_default_hpc(token, mocked_account["accountId"])
     assert hpc_id == mocked_hpc["hpcId"]
 
 
@@ -247,7 +269,7 @@ def test_create_submit_job(httpx_mock: HTTPXMock, client: httpx.Client):
         match_json=mocked_job_start,
         json=mocked_info,
     )
-    job_info = main.create_submit_job(client, concept, account_id, hpc_id, job_name)
+    job_info = app.create_submit_job(client, concept, account_id, hpc_id, job_name)
     assert job_info == mocked_info
 
 
@@ -261,7 +283,7 @@ def test_put(httpx_mock: HTTPXMock, client: httpx.Client):
         json=example_aero,
     )
 
-    results = main.put(client, "/configurations", mocked_id, example_aero)
+    results = app.put(client, "/configurations", mocked_id, example_aero)
     assert results == example_aero
 
 
@@ -269,7 +291,7 @@ def test_read_file(mocker):
     file_data = "Simple Data"
     mocked_file_data = mocker.mock_open(read_data=file_data)
     mocker.patch("builtins.open", mocked_file_data)
-    results = main.read_file("filename")
+    results = app.read_file("filename")
     assert results == file_data
 
 
@@ -288,7 +310,7 @@ def test_read_results(httpx_mock: HTTPXMock, client: httpx.Client):
         match_json=example_job_info,
         json=example_results,
     )
-    results = main.read_results(client, example_job_info)
+    results = app.read_results(client, example_job_info)
     assert example_results == results
 
 
@@ -308,5 +330,5 @@ def test_post_file(mocker, httpx_mock: HTTPXMock, client: httpx.Client):
         json=file_post_response_data,
     )
 
-    result = main.post_component_file(client, filename, component_file_type)
+    result = app.post_component_file(client, filename, component_file_type)
     assert result == file_post_response_data

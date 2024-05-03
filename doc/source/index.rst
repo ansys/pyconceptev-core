@@ -53,11 +53,11 @@ This file should look something like this:
 Get a token
 ^^^^^^^^^^^
 
-Import the main module and use :code:`get_token`. This should return a random string from the servers to get you access.
+Import the app module and use :code:`get_token`. This should return a random string from the servers to get you access.
 
 .. code-block:: python
 
-   import ansys.conceptev.core.main as pyconceptev
+   import ansys.conceptev.core.app as pyconceptev
 
    token = pyconceptev.get_token()
 
