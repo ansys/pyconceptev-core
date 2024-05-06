@@ -20,7 +20,7 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-"""Simple API Client for the Ansys ConceptEV service."""
+"""Simple API client for the Ansys ConceptEV service."""
 
 import datetime
 from json import JSONDecodeError
@@ -84,7 +84,7 @@ def get_http_client(token: str, design_instance_id: str | None = None) -> httpx.
 def processed_response(response) -> dict:
     """Process response.
 
-    Check the value returned from the API and if it's not successful raise an error.
+    Check the value returned from the API and raise an error if it's not successful.
     """
     if response.status_code == 200 or response.status_code == 201:  # Success
         try:
