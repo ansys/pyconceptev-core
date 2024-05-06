@@ -22,7 +22,7 @@
 
 """Integration tests.
 
-These integration tests test the deployed API's match out CLI client.
+These integration tests verify that the deployed API's match the CLI client.
 """
 
 import datetime

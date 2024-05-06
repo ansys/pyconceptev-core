@@ -84,7 +84,7 @@ def get_http_client(token: str, design_instance_id: str | None = None) -> httpx.
 def processed_response(response) -> dict:
     """Process response.
 
-    Check the value returned from the API and raise an error if it's not successful.
+    Check the value returned from the API and raise an error if the process is not successful.
     """
     if response.status_code == 200 or response.status_code == 201:  # Success
         try:
@@ -172,7 +172,7 @@ def create_new_project(
 
     user_details = httpx.post(osm_url + "/user/details", headers={"Authorization": token})
     if user_details.status_code != 200 and user_details.status_code != 204:
-        raise Exception(f"Failed to get user details {user_details} on the OCM.")
+        raise Exception(f"Failed to get user details {user_details} on OCM.")
 
     concept_data = {
         "capabilities_ids": [],
@@ -193,7 +193,7 @@ def create_new_project(
 
 
 def get_concept_ids(client: httpx.Client):
-    """Get Concept IDs."""
+    """Get concept IDs."""
     concepts = get(client, "/concepts")
     return {concept["name"]: concept["id"] for concept in concepts}
 
@@ -212,7 +212,7 @@ def get_account_ids(token: str) -> dict:
 
 
 def get_default_hpc(token: str, account_id: str):
-    """Get th default HPC ID."""
+    """Get the default HPC ID."""
     ocm_url = os.environ["OCM_URL"]
     response = httpx.post(
         url=ocm_url + "/account/hpc/default",
@@ -261,7 +261,7 @@ def put(client: httpx.Client, router: Router, id: str, data: dict) -> dict:
 
 
 def read_file(filename: str) -> str:
-    """Read the given file."""
+    """Read a given file."""
     with open(filename) as f:
         content = f.read()
     return content
@@ -289,14 +289,14 @@ def read_results(
         if response.status_code == 200:
             return response.json()
 
-    raise Exception(f"Too many requests: {response}.")
+    raise Exception(f"There are too many requests: {response}.")
 
 
 def post_component_file(client: httpx.Client, filename: str, component_file_type: str) -> dict:
     """Post/create from the client at the specific route with a file.
 
     An HTTP verb that performs the ``POST`` request, adds the route to the base client,
-    and then adds the file as a multipart form request.
+    and then adds the file as a multi-part form request.
     """
     path = "/components:upload"
     file_contents = read_file(filename)
