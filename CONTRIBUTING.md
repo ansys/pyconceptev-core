@@ -1,16 +1,16 @@
 # Contributing
 
-We absolutely welcome any code contributions and we hope that this
-guide will facilitate an understanding of the Pyconceptev Core code
-repository. It is important to note that while the Pyconceptev Core software
-package is maintained by ANSYS and any submissions will be reviewed
+We welcome any code contributions and hope that this
+guide facilitate an understanding of the PyConceptEV-Core code.
+It is important to note that while PyConceptEV-Core
+is maintained by Ansys and any submissions are reviewed
 thoroughly before merging, we still seek to foster a community that can
-support user questions and develop new features to make this software
-a useful tool for all users. As such, we welcome and encourage any
+support user questions and develop new features to make this library
+useful to all. As such, we welcome and encourage any
 questions or submissions to this repository.
 
-For contributing to this project, please refer to the [PyAnsys Developer's Guide].
-Further information about contributing to Pyconceptev Core can be found in [Contributing].
+For information on contributing to a PyAnsys library, see the [PyAnsys developer's guide].
+For information specific to contributing to PyConceptEV-Core, see [Contribute].
 
-[PyAnsys Developer's Guide]: https://dev.docs.pyansys.com/index.html
-[Contributing]: TBD
+[PyAnsys developer's guide]: https://dev.docs.pyansys.com/index.html
+[Contribute]: TBD

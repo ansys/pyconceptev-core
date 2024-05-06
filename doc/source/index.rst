@@ -6,40 +6,43 @@
 .. include:: ../../README.rst
 
 
-ConceptEV Specific Instructions
--------------------------------
+PyConceptEV-Core instructions
+-----------------------------
 
 Install the library
 ^^^^^^^^^^^^^^^^^^^
 
-#. Start by cloning this repository:
+#. Clone the repository with this command:
 
-.. code:: bash
+   .. code:: bash
 
-   git clone https://github.com/ansys-internal/pyconceptev-core
+      git clone https://github.com/ansys-internal/pyconceptev-core
 
-#. Install poetry following your preferred route. See https://python-poetry.org/docs/#installation for example using :code:`pipx`:
+#. Install Poetry following your preferred route.
 
-.. code:: bash
+   For example, to use :code:`pipx`, see `with pipx <https://python-poetry.org/docs/#installation>
+   in the Poetry documentation:
 
-   pipx install poetry
+   .. code:: bash
 
-#. Install dependencies using poetry:
+      pipx install poetry
 
-.. code:: bash
+#. Install dependencies using Poetry:
 
-   poetry install
+   .. code:: bash
 
-#. Activate the poetry environment:
+      poetry install
 
-.. code:: bash
+#. Activate the Poetry environment:
 
-   poetry shell
+   .. code:: bash
 
-Configure Session using .env file
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+      poetry shell
 
-You need to create a .env file to keep your password and other configurable data.
+Configure a session using an ``ENV`` file
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+You must create an ``ENV`` file to keep your password and other configurable data in.
 This file should look something like this:
 
 .. code-block:: bash
@@ -53,7 +56,8 @@ This file should look something like this:
 Get a token
 ^^^^^^^^^^^
 
-Import the main module and use :code:`get_token`. This should return a random string from the servers to get you access.
+Import the main module and use the :code:`get_token()` method. This should return
+a random string from the servers to get you access.
 
 .. code-block:: python
 
@@ -65,7 +69,8 @@ Import the main module and use :code:`get_token`. This should return a random st
 Create a client
 ^^^^^^^^^^^^^^^
 
-You need to create a client that can access and talk to the API. You can use the health check API to check your connection.
+You must create a client that can access and talk to the Ansys ConceptEV API. You can use
+the health check endpoint to check your connection.
 
 .. code-block:: python
 
@@ -79,11 +84,12 @@ You need to create a client that can access and talk to the API. You can use the
 Understand the API
 ^^^^^^^^^^^^^^^^^^
 
-Use the API documentation at https://dev-conceptev.awsansys3np.onscale.com/api/docs
-This shows you which verbs and which routes/paths are available and what inputs/outputs they have.
+The `Ansys OnScale API documentation <https://dev-conceptev.awsansys3np.onscale.com/api/docs>`_
+shows you which verbs and which routes/paths are available and what inputs/outputs they have.
 You can use the verb functions created in this module to make things simpler.
 
-To create a configuration we need to use the verb `post` with route `/configurations` and add the `data` from the schema.
+To create a configuration, you must use the verb ``post`` with the route ``/configurations`` and
+add the ``data`` from the schema:
 
 .. code-block:: python
 

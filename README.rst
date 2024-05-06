@@ -1,4 +1,4 @@
-Pyconceptev core
+PyConceptEV-Core
 ================
 |pyansys| |MIT| |black|
 
@@ -43,40 +43,41 @@ Pyconceptev core
 Overview
 --------
 
-PyAnsys ConceptEV is a Python client library for the Ansys ConceptEV service.
+PyConceptEV-Core is a Python client library for the Ansys ConceptEV service.
 
 
-How to install
---------------
+Installation
+------------
 
-At least two installation modes are provided: user and developer.
+Two installation modes are provided: user and developer.
 
-For users
-^^^^^^^^^
+Install in user mode
+^^^^^^^^^^^^^^^^^^^^
 
-In order to install Pyconceptev core, make sure you
-have the latest version of `pip`_. To do so, run:
+Before installing PyConceptEV-Core, make sure that you have the latest version
+of `pip`_ by running this command:
 
 .. code:: bash
 
    python -m pip install -U pip
 
-Then, you can simply execute:
+Then, install PyConceptEV-Core with this command:
 
 .. code:: bash
 
    python -m pip pip install ansys-conceptev-core
 
-For developers
-^^^^^^^^^^^^^^
+Install in development mode
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Installing Pyconceptev core in developer mode allows
+Installing PyConceptEV-Core in developer mode allows
 you to modify the source and enhance it.
 
-Before contributing to the project, please refer to the `PyAnsys Developer's guide`_. You will
-need to follow these steps:
+Before contributing to the project, see to the `PyAnsys developer's guide`_.
 
-#. Start by cloning this repository and move into it:
+To install PyConceptEV-Core in developer mode, perform these steps:
+
+#. Clone the repository and move into it:
 
 .. code:: bash
 
@@ -99,51 +100,53 @@ need to follow these steps:
    # Activate it in Windows Powershell
    .venv\Scripts\Activate.ps1
 
-#. Make sure you have the latest required build system and doc, testing, and CI tools:
+#. Make sure that you have the latest required build system and documentation, testing, and CI tools:
 
-.. code:: bash
+   .. code:: bash
 
-   python -m pip install -U pip poetry tox
+      python -m pip install -U pip poetry tox
 
 #. Install the project in editable mode:
 
-.. code:: bash
+   .. code:: bash
 
-   poetry install
+      poetry install
 
-#. Finally, verify your development installation by running:
+#. Finally, verify your development installation by running this command:
 
-.. code:: bash
+   .. code:: bash
 
-   tox
+      tox
 
 
-How to testing
---------------
+Testing
+-------
 
-This project takes advantage of `tox`_. This tool allows to automate common
-development tasks (similar to Makefile) but it is oriented towards Python
+This project takes advantage of `tox`_. This tool lets you automate common
+development tasks (similar to Makefile), but it is oriented towards Python
 development.
 
 Using tox
 ^^^^^^^^^
 
 As Makefile has rules, `tox`_ has environments. In fact, the tool creates its
-own virtual environment so anything being tested is isolated from the project in
-order to guarantee project's integrity. The following environments commands are provided:
+own virtual environment so that anything being tested is isolated from the project
+to guarantee the project's integrity.
 
-- **tox -e style**: will check for coding style quality.
-- **tox -e py**: checks for unit tests.
-- **tox -e py-coverage**: checks for unit testing and code coverage.
-- **tox -e doc**: checks for documentation building process.
+The following environments commands are provided:
+
+- **tox -e style**: Checks for coding style quality.
+- **tox -e py**: Cchecks for unit tests.
+- **tox -e py-coverage**: Checks for unit testing and code coverage.
+- **tox -e doc**: Checks for the documentation-building process.
 
 
 Raw testing
 ^^^^^^^^^^^
 
-If required, you can always call the style commands (`black`_, `isort`_,
-`flake8`_...) or unit testing ones (`pytest`_) from the command line. However,
-this does not guarantee that your project is being tested in an isolated
+If required, from the command line, you can always call style commands, such as
+`black`_, `isort`_, and `flake8`_, or unit testing commands such as `pytest`_. However,
+running these commands does not guarantee that your project is being tested in an isolated
 environment, which is the reason why tools like `tox`_ exist.
 
 
@@ -151,7 +154,7 @@ A note on pre-commit
 ^^^^^^^^^^^^^^^^^^^^
 
 The style checks take advantage of `pre-commit`_. Developers are not forced but
-encouraged to install this tool via:
+encouraged to install this tool by running this commandd:
 
 .. code:: bash
 
@@ -161,8 +164,8 @@ encouraged to install this tool via:
 Documentation
 -------------
 
-For building documentation, you can either run the usual rules provided in the
-`Sphinx`_ Makefile, such as:
+For building documentation, you can run the usual rules provided in the
+`Sphinx`_ Makefile:
 
 .. code:: bash
 
@@ -172,7 +175,7 @@ For building documentation, you can either run the usual rules provided in the
    # In Windows environment
    .\doc\make.bat html && your_browser_name doc/html/index.html
 
-However, the recommended way of checking documentation integrity is using:
+However, the recommended way of checking documentation integrity is using ``tox``:
 
 .. code:: bash
 
@@ -182,8 +185,8 @@ However, the recommended way of checking documentation integrity is using:
 Distributing
 ------------
 
-If you would like to create either source or wheel files, start by installing
-the building requirements and then executing the build module:
+If you would like to create either source or wheel files, run these commands to
+install the building requirements and then execute the build module:
 
 .. code:: bash
 
@@ -198,7 +201,7 @@ the building requirements and then executing the build module:
 .. _isort: https://github.com/PyCQA/isort
 .. _pip: https://pypi.org/project/pip/
 .. _pre-commit: https://pre-commit.com/
-.. _PyAnsys Developer's guide: https://dev.docs.pyansys.com/
+.. _PyAnsys developer's guide: https://dev.docs.pyansys.com/
 .. _pytest: https://docs.pytest.org/en/stable/
 .. _Sphinx: https://www.sphinx-doc.org/en/master/
 .. _tox: https://tox.wiki/

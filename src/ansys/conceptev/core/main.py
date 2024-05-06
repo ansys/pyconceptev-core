@@ -20,7 +20,7 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-"""A Simple API Client for ConceptEV."""
+"""Simple API Client for the Ansys ConceptEV service."""
 
 import datetime
 from json import JSONDecodeError
@@ -68,10 +68,10 @@ def get_token() -> str:
 
 
 def get_http_client(token: str, design_instance_id: str | None = None) -> httpx.Client:
-    """Get a http client.
+    """Get an HTTP client.
 
-    This http client creates and maintains the connection and is more performant than
-    re-creating that connection for each call.
+    The HTTP client creates and maintains the connection and is more performant than
+    re-creating this connection for each call.
     """
     base_url = os.environ["CONCEPTEV_URL"]
     if design_instance_id:
@@ -84,7 +84,7 @@ def get_http_client(token: str, design_instance_id: str | None = None) -> httpx.
 def processed_response(response) -> dict:
     """Process response.
 
-    Check the return from the api and if it's not successful raise an error.
+    Check the value returned from the API and if it's not successful raise an error.
     """
     if response.status_code == 200 or response.status_code == 201:  # Success
         try:
@@ -99,7 +99,7 @@ def get(
 ) -> dict:
     """Get/read from the client at the specific route.
 
-    A http verb. Performs the get request adding the route to the base client.
+    This HTTP verb performs the get request and adds the route to the base client.
     """
     if id:
         path = "/".join([router, id])
@@ -112,7 +112,7 @@ def get(
 def post(client: httpx.Client, router: Router, data: dict, params: dict = {}) -> dict:
     """Post/create from the client at the specific route.
 
-    A http verb. Performs the post request adding the route to the base client.
+    This HTTP verb performs the post request and adds the route to the base client.
     """
     response = client.post(url=router, json=data, params=params)
     return processed_response(response)
@@ -121,12 +121,12 @@ def post(client: httpx.Client, router: Router, data: dict, params: dict = {}) ->
 def delete(client: httpx.Client, router: Router, id: str) -> dict:
     """Delete from the client at the specific route.
 
-    A http verb. Performs the delete request adding the route to the base client.
+    This HTTP verb performs the delete request and adds the route to the base client.
     """
     path = "/".join([router, id])
     response = client.delete(url=path)
     if response.status_code != 204:
-        raise Exception(f"Failed to delete from {router} with id:{id}")
+        raise Exception(f"Failed to delete from {router} with ID:{id}.")
 
 
 def create_new_project(
@@ -136,7 +136,7 @@ def create_new_project(
     title: str,
     project_goal: str = "Created from the CLI",
 ):
-    """Create a new project."""
+    """Create a project."""
     osm_url = os.environ["OCM_URL"]
     token = client.headers["Authorization"]
     project_data = {
@@ -149,7 +149,7 @@ def create_new_project(
         osm_url + "/project/create", headers={"Authorization": token}, json=project_data
     )
     if created_project.status_code != 200 and created_project.status_code != 204:
-        raise Exception(f"Failed to create a project on OCM {created_project}")
+        raise Exception(f"Failed to create a project on OCM {created_project}.")
 
     product_ids = httpx.get(osm_url + "/product/list", headers={"Authorization": token})
     product_id = [
@@ -168,11 +168,11 @@ def create_new_project(
     )
 
     if created_design.status_code != 200 and created_design.status_code != 204:
-        raise Exception(f"Failed to create a design on OCM {created_design.content}")
+        raise Exception(f"Failed to create a design on OCM {created_design.content}.")
 
     user_details = httpx.post(osm_url + "/user/details", headers={"Authorization": token})
     if user_details.status_code != 200 and user_details.status_code != 204:
-        raise Exception(f"Failed to get a user details on OCM {user_details}")
+        raise Exception(f"Failed to get user details {user_details} on the OCM.")
 
     concept_data = {
         "capabilities_ids": [],
@@ -193,13 +193,13 @@ def create_new_project(
 
 
 def get_concept_ids(client: httpx.Client):
-    """Get Concept Ids."""
+    """Get Concept IDs."""
     concepts = get(client, "/concepts")
     return {concept["name"]: concept["id"] for concept in concepts}
 
 
 def get_account_ids(token: str) -> dict:
-    """Get account ids."""
+    """Get account IDs."""
     ocm_url = os.environ["OCM_URL"]
     response = httpx.post(url=ocm_url + "/account/list", headers={"authorization": token})
     if response.status_code != 200:
@@ -212,7 +212,7 @@ def get_account_ids(token: str) -> dict:
 
 
 def get_default_hpc(token: str, account_id: str):
-    """Get default hpc id."""
+    """Get th default HPC ID."""
     ocm_url = os.environ["OCM_URL"]
     response = httpx.post(
         url=ocm_url + "/account/hpc/default",
@@ -220,7 +220,7 @@ def get_default_hpc(token: str, account_id: str):
         headers={"authorization": token},
     )
     if response.status_code != 200:
-        raise Exception(f"Failed to get accounts {response}")
+        raise Exception(f"Failed to get accounts {response}.")
     return response.json()["hpcId"]
 
 
@@ -253,7 +253,7 @@ def create_submit_job(
 def put(client: httpx.Client, router: Router, id: str, data: dict) -> dict:
     """Put/update from the client at the specific route.
 
-    A http verb. Performs the put request adding the route to the base client.
+    An HTTP verb that performs the PUT request and adds the route to the base client.
     """
     path = "/".join([router, id])
     response = client.put(url=path, json=data)
@@ -274,7 +274,7 @@ def read_results(
     no_of_tries: int = 200,
     rate_limit: float = 0.3,
 ) -> dict:
-    """Keep trying for results if the results aren't completed try again."""
+    """Keep trying for results. If results aren't completed, try again."""
     version_number = get(client, "/utilities:data_format_version")
     for i in range(0, no_of_tries):
         response = client.post(
@@ -289,14 +289,14 @@ def read_results(
         if response.status_code == 200:
             return response.json()
 
-    raise Exception(f"To many request: {response}")
+    raise Exception(f"Too many requests: {response}.")
 
 
 def post_component_file(client: httpx.Client, filename: str, component_file_type: str) -> dict:
     """Post/create from the client at the specific route with a file.
 
-    A http verb. Performs the post request adding the route to the base client.
-    Adds the file as a multipart form request.
+    An HTTP verb that performs the post request, adds the route to the base client,
+    and adds the file as a multipart form request.
     """
     path = "/components:upload"
     file_contents = read_file(filename)
@@ -309,8 +309,8 @@ def post_component_file(client: httpx.Client, filename: str, component_file_type
 if __name__ == "__main__":
     token = get_token()
 
-    with get_http_client(token) as client:  # Create a client to talk to the api
-        health = get(client, "/health")  # Check the api is healthy
+    with get_http_client(token) as client:  # Create a client to talk to the API
+        health = get(client, "/health")  # Check that the API is healthy
         print(health)
         concepts = get(client, "/concepts")  # Get a list of concepts
         print(concepts)

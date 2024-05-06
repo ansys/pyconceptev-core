@@ -1,1 +1,3 @@
 (?i)Ansys
+PyConceptEV-Core
+pipx
