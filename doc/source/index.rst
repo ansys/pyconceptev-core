@@ -20,7 +20,7 @@ Install the library
 
 #. Install Poetry following your preferred route.
 
-   For example, to use :code:`pipx`, see `with pipx <https://python-poetry.org/docs/#installation>
+   For example, to use :code:`pipx`, see `with pipx <https://python-poetry.org/docs/#installation>`_
    in the Poetry documentation:
 
    .. code:: bash
@@ -56,8 +56,8 @@ This file should look something like this:
 Get a token
 ^^^^^^^^^^^
 
-Import the main module and use the :code:`get_token()` method. This should return
-a random string from the servers to get you access.
+Import the main module and use the :code:`get_token()` method to get a
+a random access string from the server.
 
 .. code-block:: python
 
@@ -85,10 +85,10 @@ Understand the API
 ^^^^^^^^^^^^^^^^^^
 
 The `Ansys OnScale API documentation <https://dev-conceptev.awsansys3np.onscale.com/api/docs>`_
-shows you which verbs and which routes/paths are available and what inputs/outputs they have.
+shows you which verbs and which routes or paths are available and what inputs and outputs they have.
 You can use the verb functions created in this module to make things simpler.
 
-To create a configuration, you must use the verb ``post`` with the route ``/configurations`` and
+To create a configuration, you must use the verb ``POST`` with the route ``/configurations`` and
 add the ``data`` from the schema:
 
 .. code-block:: python

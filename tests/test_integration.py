@@ -20,9 +20,9 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-"""Integration Tests.
+"""Integration tests.
 
-These should test the deployed api's match out cli client.
+These integration tests test the deployed API's match out CLI client.
 """
 
 import datetime
@@ -37,7 +37,7 @@ from ansys.conceptev.core import main
 
 dotenv.load_dotenv()
 DATADIR = Path(__file__).parents[0]
-# Example data can be got from the schema sections of the api docs.
+# Example data can be obtained from the schema sections of the API documentation.
 
 aero1 = {
     "name": "New Aero Config",
@@ -98,7 +98,7 @@ def set_env(env):
             "CONCEPTEV_USERNAME": "philip.usher@ansys.com",
             "CONCEPTEV_PASSWORD": os.environ["CONCEPTEV_PASSWORD_DEV"],
         },
-        # OCM Test = ConceptEV Dev
+        # OCM test = ConceptEV Dev
         "test": {
             "CONCEPTEV_URL": "https://test-conceptev.awsansys3np.onscale.com/api/",
             "OCM_URL": "https://dev.portal.onscale.com/api",
@@ -126,8 +126,8 @@ def test_happy_path(env):
     set_env(env)
     token = main.get_token()
 
-    with main.get_http_client(token) as client:  # Create a client to talk to the api
-        health = main.get(client, "/health")  # Check the api is healthy
+    with main.get_http_client(token) as client:  # Create a client to talk to the API
+        health = main.get(client, "/health")  # Check that the API is healthy
         print(health)
         concepts = main.get(client, "/concepts")  # Get a list of concepts
         print(concepts)
@@ -137,52 +137,56 @@ def test_happy_path(env):
         hpc_id = main.get_default_hpc(token, account_id)
         created_concept = main.create_new_project(
             client, account_id, hpc_id, f"New Project +{datetime.datetime.now()}"
-        )  # Create a new concept.
+        )  # Create a concept.
 
-    concept_id = created_concept["id"]  # get the id of the newly created concept.
+    concept_id = created_concept["id"]  # Get the ID of the newly created concept.
     design_instance_id = created_concept["design_instance_id"]
     with main.get_http_client(
         token, design_instance_id
-    ) as client:  # get client with concept id embedded in
-        ### Basic Post(create) and get(read) operations on Configurations
+    ) as client:  # Get client with concept ID embedded
+        ### Basic ``POST`` (create) and ``GET`` (read) operations on configurations
 
-        created_aero = main.post(client, "/configurations", data=aero1)  # create an aero
-        created_aero2 = main.post(client, "/configurations", data=aero2)  # create an aero
+        created_aero = main.post(client, "/configurations", data=aero1)  # Create an aero
+        created_aero2 = main.post(client, "/configurations", data=aero2)  # Create an aero
         created_mass = main.post(client, "/configurations", data=mass)
         created_wheel = main.post(client, "/configurations", data=wheel)
 
         configurations = main.get(
             client, "/configurations", params={"config_type": "aero"}
-        )  # read all aeros
+        )  # Read all aeros
         print(configurations)
 
         aero = main.get(
             client, "/configurations", id=created_aero["id"]
-        )  # get a particular aero configuration
+        )  # Get a particular aero configuration
         print(aero)
 
-        ### Create Components
+        ## In Python, the ``#`` symbol is used to indicate a comment.
+        # Comments are ignored by the Python interpreter. They are meant for human readers
+        # to understand the code. Comments are used to explain the code, provide context,
+        # or disable certain parts of the code temporarily.
+        ## Create components
         created_transmission = main.post(
             client, "/components", data=transmission
-        )  # create transmission
+        )  # Create transmission
 
         motor_loss_map = main.post_component_file(
             client,
             motor_file_name,
             "motor_lab_file",
-            # create motor from file
+            # Create motor from file
         )
         motor_data["data_id"] = motor_loss_map[0]
         motor_data["max_speed"] = motor_loss_map[1]
         created_motor = main.post(client, "/components", data=motor_data)
         print(created_motor)
-        client.timeout = 2000  # Needed as these calculations will take a long time.
+        client.timeout = 2000  # Needed as these calculations take a long time.
         motor_loss_map = main.post(
             client,
             "/components:get_display_data",
             data={},
             params={"component_id": created_motor["id"]},
-        )  # get loss map from motor
+        )  # Get loss map from motor
 
         x = motor_loss_map["currents"]
         y = motor_loss_map["phase_advances"]
@@ -190,7 +194,7 @@ def test_happy_path(env):
         fig = go.Figure(data=go.Contour(x=x, y=y, z=z))
         fig.show()
 
-        created_battery = main.post(client, "/components", data=battery)  # create battery
+        created_battery = main.post(client, "/components", data=battery)  # Create battery
 
         ### Architecture
         architecture = {
@@ -202,7 +206,7 @@ def test_happy_path(env):
             "number_of_rear_motors": 0,
             "battery_id": created_battery["id"],
         }
-        created_arch = main.post(client, "/architectures", data=architecture)  # create arch
+        created_arch = main.post(client, "/architectures", data=architecture)  # Create arch
 
         # Requirements
         requirement = {
@@ -222,7 +226,7 @@ def test_happy_path(env):
 
         job_info = main.create_submit_job(client, concept, account_id, hpc_id)
 
-        ## Read results needs an api update
+        ## Read results requires an API update
         results = main.read_results(client, job_info, calculate_units=False)
         x = results[0]["capability_curve"]["speeds"]
         y = results[0]["capability_curve"]["torques"]

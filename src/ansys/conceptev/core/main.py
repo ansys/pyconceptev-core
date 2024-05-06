@@ -70,7 +70,7 @@ def get_token() -> str:
 def get_http_client(token: str, design_instance_id: str | None = None) -> httpx.Client:
     """Get an HTTP client.
 
-    The HTTP client creates and maintains the connection and is more performant than
+    The HTTP client creates and maintains the connection, which is more performant than
     re-creating this connection for each call.
     """
     base_url = os.environ["CONCEPTEV_URL"]
@@ -99,7 +99,7 @@ def get(
 ) -> dict:
     """Get/read from the client at the specific route.
 
-    This HTTP verb performs the get request and adds the route to the base client.
+    This HTTP verb performs the ``GET`` request and adds the route to the base client.
     """
     if id:
         path = "/".join([router, id])
@@ -112,7 +112,7 @@ def get(
 def post(client: httpx.Client, router: Router, data: dict, params: dict = {}) -> dict:
     """Post/create from the client at the specific route.
 
-    This HTTP verb performs the post request and adds the route to the base client.
+    This HTTP verb performs the ``POST`` request and adds the route to the base client.
     """
     response = client.post(url=router, json=data, params=params)
     return processed_response(response)
@@ -121,7 +121,7 @@ def post(client: httpx.Client, router: Router, data: dict, params: dict = {}) ->
 def delete(client: httpx.Client, router: Router, id: str) -> dict:
     """Delete from the client at the specific route.
 
-    This HTTP verb performs the delete request and adds the route to the base client.
+    This HTTP verb performs the ``DELETE`` request and adds the route to the base client.
     """
     path = "/".join([router, id])
     response = client.delete(url=path)
@@ -203,7 +203,7 @@ def get_account_ids(token: str) -> dict:
     ocm_url = os.environ["OCM_URL"]
     response = httpx.post(url=ocm_url + "/account/list", headers={"authorization": token})
     if response.status_code != 200:
-        raise Exception(f"Failed to get accounts {response}")
+        raise Exception(f"Failed to get accounts {response}.")
     accounts = {
         account["account"]["accountName"]: account["account"]["accountId"]
         for account in response.json()
@@ -253,7 +253,7 @@ def create_submit_job(
 def put(client: httpx.Client, router: Router, id: str, data: dict) -> dict:
     """Put/update from the client at the specific route.
 
-    An HTTP verb that performs the PUT request and adds the route to the base client.
+    An HTTP verb that performs the ``PUT`` request and adds the route to the base client.
     """
     path = "/".join([router, id])
     response = client.put(url=path, json=data)
@@ -261,7 +261,7 @@ def put(client: httpx.Client, router: Router, id: str, data: dict) -> dict:
 
 
 def read_file(filename: str) -> str:
-    """Read file."""
+    """Read the given file."""
     with open(filename) as f:
         content = f.read()
     return content
@@ -295,8 +295,8 @@ def read_results(
 def post_component_file(client: httpx.Client, filename: str, component_file_type: str) -> dict:
     """Post/create from the client at the specific route with a file.
 
-    An HTTP verb that performs the post request, adds the route to the base client,
-    and adds the file as a multipart form request.
+    An HTTP verb that performs the ``POST`` request, adds the route to the base client,
+    and then adds the file as a multipart form request.
     """
     path = "/components:upload"
     file_contents = read_file(filename)
