@@ -230,7 +230,7 @@ jobs:
   release-github:
     name: Release to GitHub
     runs-on: ubuntu-latest
-    needs: [doc-build, build-library, update-changelog]
+    needs: [doc-build, package, update-changelog]
     steps:
       - name: "Release to GitHub"
         if: github.event_name == 'push' && contains(github.ref, 'refs/tags')
