@@ -10,33 +10,33 @@ PyConceptEV-Core
    :target: https://www.python.org/downloads/
    :alt: Python
 
-.. |pypi| image:: https://img.shields.io/pypi/v/ansys-conceptev-core.svg?logo=python&logoColor=white
-   :target: https://pypi.org/project/ansys-conceptev-core
-   :alt: PyPI
+.. .. |pypi| image:: https://img.shields.io/pypi/v/ansys-conceptev-core.svg?logo=python&logoColor=white
+..    :target: https://pypi.org/project/ansys-conceptev-core
+..    :alt: PyPI
 
-.. |downloads| image:: https://img.shields.io/pypi/dm/ansys-conceptev-core.svg
-   :target: https://pypi.org/project/ansys-conceptev-core/
-   :alt: PyPI Downloads
+.. .. |downloads| image:: https://img.shields.io/pypi/dm/ansys-conceptev-core.svg
+..    :target: https://pypi.org/project/ansys-conceptev-core/
+..    :alt: PyPI Downloads
 
-.. |codecov| image:: https://codecov.io/gh/ansys/pyconceptev-core/graph/badge.svg?token=UZIC7XT5WE
-   :target: https://codecov.io/gh/ansys/pyconceptev-core
-   :alt: Codecov
+.. .. |codecov| image:: https://codecov.io/gh/ansys/pyconceptev-core/graph/badge.svg?token=UZIC7XT5WE
+..    :target: https://codecov.io/gh/ansys/pyconceptev-core
+..    :alt: Codecov
 
-.. |GH-CI| image:: https://github.com/ansys/pyconceptev-core/actions/workflows/ci_cd.yml/badge.svg
-   :target: https://github.com/ansys/pyconceptev-core/actions/workflows/ci_cd.yml
-   :alt: GH-CI
+.. .. |GH-CI| image:: https://github.com/ansys/pyconceptev-core/actions/workflows/ci_cd.yml/badge.svg
+..    :target: https://github.com/ansys/pyconceptev-core/actions/workflows/ci_cd.yml
+..    :alt: GH-CI
 
 .. |MIT| image:: https://img.shields.io/badge/License-MIT-yellow.svg
    :target: https://opensource.org/licenses/MIT
    :alt: MIT
 
-.. |black| image:: https://img.shields.io/badge/code%20style-black-000000.svg?style=flat
-   :target: https://github.com/psf/black
-   :alt: Black
+.. .. |black| image:: https://img.shields.io/badge/code%20style-black-000000.svg?style=flat
+..    :target: https://github.com/psf/black
+..    :alt: Black
 
-.. |pre-commit| image:: https://results.pre-commit.ci/badge/github/ansys/pyconceptev-core/main.svg
-   :target: https://results.pre-commit.ci/latest/github/ansys/pyconceptev-core/main
-   :alt: pre-commit.ci
+.. .. |pre-commit| image:: https://results.pre-commit.ci/badge/github/ansys/pyconceptev-core/main.svg
+..    :target: https://results.pre-commit.ci/latest/github/ansys/pyconceptev-core/main
+..    :alt: pre-commit.ci
 
 .. contents::
 
