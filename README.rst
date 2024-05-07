@@ -6,24 +6,24 @@ PyConceptEV-Core
    :target: https://docs.pyansys.com/
    :alt: PyAnsys
 
-.. |python| image:: https://img.shields.io/pypi/pyversions/ansys-conceptev-core?logo=pypi
-   :target: TBD
+.. |python| image:: https://img.shields.io/badge/python-3.9+-blue.svg
+   :target: https://www.python.org/downloads/
    :alt: Python
 
 .. |pypi| image:: https://img.shields.io/pypi/v/ansys-conceptev-core.svg?logo=python&logoColor=white
-   :target: TBD
+   :target: https://pypi.org/project/ansys-conceptev-core
    :alt: PyPI
 
 .. |downloads| image:: https://img.shields.io/pypi/dm/ansys-conceptev-core.svg
-   :target: TBD
+   :target: https://pypi.org/project/ansys-conceptev-core/
    :alt: PyPI Downloads
 
-.. |codecov| image:: TBD
-   :target: TBD
+.. |codecov| image:: https://codecov.io/gh/ansys/pyconceptev-core/graph/badge.svg?token=UZIC7XT5WE
+   :target: https://codecov.io/gh/ansys/pyconceptev-core
    :alt: Codecov
 
-.. |GH-CI| image:: TBD
-   :target: TBD
+.. |GH-CI| image:: https://github.com/ansys/pyconceptev-core/actions/workflows/ci_cd.yml/badge.svg
+   :target: https://github.com/ansys/pyconceptev-core/actions/workflows/ci_cd.yml
    :alt: GH-CI
 
 .. |MIT| image:: https://img.shields.io/badge/License-MIT-yellow.svg
@@ -34,8 +34,8 @@ PyConceptEV-Core
    :target: https://github.com/psf/black
    :alt: Black
 
-.. |pre-commit| image:: TBD
-   :target: TBD
+.. |pre-commit| image:: https://results.pre-commit.ci/badge/github/ansys/pyconceptev-core/main.svg
+   :target: https://results.pre-commit.ci/latest/github/ansys/pyconceptev-core/main
    :alt: pre-commit.ci
 
 .. contents::

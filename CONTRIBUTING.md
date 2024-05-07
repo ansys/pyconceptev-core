@@ -13,4 +13,4 @@ For information on contributing to a PyAnsys library, see the [PyAnsys developer
 For information specific to contributing to PyConceptEV-Core, see [Contribute].
 
 [PyAnsys developer's guide]: https://dev.docs.pyansys.com/index.html
-[Contribute]: TBD
+[Contribute]: https://conceptev.core.docs.pyansys.com/dev/contributing.html
