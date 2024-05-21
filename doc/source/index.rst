@@ -49,8 +49,8 @@ This file should look something like this:
 
    CONCEPTEV_USERNAME = joe.blogs@my_work.com
    CONCEPTEV_PASSWORD = sup3r_s3cr3t_passw0rd
-   OCM_URL = https://test.portal.onscale.com/api
-   CONCEPTEV_URL = https://dev-conceptev.awsansys3np.onscale.com/api
+   OCM_URL = https://prod.portal.onscale.com/api
+   CONCEPTEV_URL = https://conceptev.ansys.com/api
 
 
 Get a token
@@ -84,7 +84,7 @@ the health check endpoint to check your connection.
 Understand the API
 ^^^^^^^^^^^^^^^^^^
 
-The `Ansys OnScale API documentation <https://dev-conceptev.awsansys3np.onscale.com/api/docs>`_
+The `Ansys OnScale API documentation <https://conceptev.ansys.com/api/docs>`_
 shows you which verbs and which routes or paths are available and what inputs and outputs they have.
 You can use the verb functions created in this module to make things simpler.
 

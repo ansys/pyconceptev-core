@@ -43,7 +43,7 @@ PyConceptEV-Core
 Overview
 --------
 
-PyConceptEV-Core is a Python client library for the Ansys ConceptEV service,
+PyConceptEV-Core is a Python client library for the `Ansys ConceptEV <https://www.ansys.com/products/electronics/ansys-concept-ev>`_  service,
 which provides a cloud-based design and simulation platform for the concept design
 of EV powertrains.
 

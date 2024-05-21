@@ -149,7 +149,7 @@ def create_new_project(
         osm_url + "/project/create", headers={"Authorization": token}, json=project_data
     )
     if created_project.status_code != 200 and created_project.status_code != 204:
-        raise Exception(f"Failed to create a project on OCM {created_project}.")
+        raise Exception(f"Failed to create a project {created_project}.")
 
     product_ids = httpx.get(osm_url + "/product/list", headers={"Authorization": token})
     product_id = [
@@ -172,7 +172,7 @@ def create_new_project(
 
     user_details = httpx.post(osm_url + "/user/details", headers={"Authorization": token})
     if user_details.status_code != 200 and user_details.status_code != 204:
-        raise Exception(f"Failed to get user details {user_details} on OCM.")
+        raise Exception(f"Failed to get user details {user_details}.")
 
     concept_data = {
         "capabilities_ids": [],
@@ -296,7 +296,7 @@ def post_component_file(client: httpx.Client, filename: str, component_file_type
     """Post/create from the client at the specific route with a file.
 
     An HTTP verb that performs the ``POST`` request, adds the route to the base client,
-    and then adds the file as a multi-part form request.
+    and then adds the file as a multipart form request.
     """
     path = "/components:upload"
     file_contents = read_file(filename)
