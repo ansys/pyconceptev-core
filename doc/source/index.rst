@@ -6,8 +6,8 @@
 .. include:: ../../README.rst
 
 
-PyConceptEV-Core instructions
------------------------------
+PyConceptEV instructions
+------------------------
 
 Install the library
 ^^^^^^^^^^^^^^^^^^^
