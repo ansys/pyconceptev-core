@@ -1,4 +1,4 @@
-PyConceptEV-Core
+PyConceptEV
 ================
 |pyansys| |MIT| |black|
 
@@ -43,7 +43,7 @@ PyConceptEV-Core
 Overview
 --------
 
-PyConceptEV-Core is a Python client library for the `Ansys ConceptEV <https://www.ansys.com/products/electronics/ansys-concept-ev>`_  service,
+PyConceptEV is a Python client library for the `Ansys ConceptEV <https://www.ansys.com/products/electronics/ansys-concept-ev>`_  service,
 which provides a cloud-based design and simulation platform for the concept design
 of EV powertrains.
 
@@ -56,14 +56,14 @@ Two installation modes are provided: user and developer.
 Install in user mode
 ^^^^^^^^^^^^^^^^^^^^
 
-Before installing PyConceptEV-Core, make sure that you have the latest version
+Before installing PyConceptEV, make sure that you have the latest version
 of `pip`_ by running this command:
 
 .. code:: bash
 
    python -m pip install -U pip
 
-Then, install PyConceptEV-Core with this command:
+Then, install PyConceptEV with this command:
 
 .. code:: bash
 
@@ -72,12 +72,12 @@ Then, install PyConceptEV-Core with this command:
 Install in development mode
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Installing PyConceptEV-Core in developer mode allows
+Installing PyConceptEV in developer mode allows
 you to modify the source and enhance it.
 
 Before contributing to the project, see the `PyAnsys developer's guide`_.
 
-To install PyConceptEV-Core in developer mode, perform these steps:
+To install PyConceptEV in developer mode, perform these steps:
 
 #. Clone the repository and move into it:
 
