@@ -75,34 +75,38 @@ Install in developer mode
 Installing PyConceptEV in developer mode allows
 you to modify the source and enhance it.
 
-Before contributing to the project, see the `PyAnsys developer's guide`_.
+**Note:** Overall guidance on contributing to a PyAnsys library appears in the
+`Contributing <https://dev.docs.pyansys.com/how-to/contributing.html>`_ topic
+in the *PyAnsys developer's guide*. Ensure that you are thoroughly familiar
+with this guide before attempting to contribute to PyConceptEV.
 
 To install PyConceptEV in developer mode, perform these steps:
 
 #. Clone the repository and move into it:
 
-.. code:: bash
+   .. code:: bash
 
-   git clone https://github.com/ansys-internal/pyconceptev-core
-   cd pyconceptev-core
+      git clone https://github.com/ansys-internal/pyconceptev-core
+      cd pyconceptev-core
 
 #. Create a fresh-clean Python environment and activate it:
 
-.. code:: bash
+   .. code:: bash
 
-   # Create a virtual environment
-   python -m venv .venv
+      # Create a virtual environment
+      python -m venv .venv
 
-   # Activate it in a POSIX system
-   source .venv/bin/activate
+      # Activate it in a POSIX system
+      source .venv/bin/activate
 
-   # Activate it in Windows CMD environment
-   .venv\Scripts\activate.bat
+      # Activate it in Windows CMD environment
+      .venv\Scripts\activate.bat
 
-   # Activate it in Windows Powershell
-   .venv\Scripts\Activate.ps1
+      # Activate it in Windows Powershell
+      .venv\Scripts\Activate.ps1
 
-#. Make sure that you have the latest required build system and documentation, testing, and CI tools:
+#. Make sure that you have the latest required build system and documentation, testing,
+   and CI tools:
 
    .. code:: bash
 
@@ -114,7 +118,7 @@ To install PyConceptEV in developer mode, perform these steps:
 
       poetry install
 
-#. Finally, verify your development installation by running this command:
+#. Verify your development installation:
 
    .. code:: bash
 
@@ -128,23 +132,23 @@ This project takes advantage of `tox`_. This tool lets you automate common
 development tasks (similar to Makefile), but it is oriented towards Python
 development.
 
-Using tox
-^^^^^^^^^
+Use ``tox``
+^^^^^^^^^^^
 
 As Makefile has rules, `tox`_ has environments. In fact, the tool creates its
 own virtual environment so that anything being tested is isolated from the project
 to guarantee the project's integrity.
 
-The following environments commands are provided:
+The following environment commands are provided:
 
 - **tox -e style**: Checks for coding style quality.
-- **tox -e py**: Cchecks for unit tests.
+- **tox -e py**: Checks for unit tests.
 - **tox -e py-coverage**: Checks for unit testing and code coverage.
 - **tox -e doc**: Checks for the documentation-building process.
 
 
-Raw testing
-^^^^^^^^^^^
+Perform raw testing
+^^^^^^^^^^^^^^^^^^^
 
 If required, from the command line, you can always call style commands, such as
 `Black`_, `isort`_, and `Flake8`_, or unit testing commands such as `pytest`_. However,
@@ -152,11 +156,11 @@ running these commands does not guarantee that your project is being tested in a
 environment, which is the reason why tools like `tox`_ exist.
 
 
-A note on pre-commit
-^^^^^^^^^^^^^^^^^^^^
+Use ``pre-commit``
+^^^^^^^^^^^^^^^^^^
 
 The style checks take advantage of `pre-commit`_. Developers are not forced but
-encouraged to install this tool by running this commandd:
+encouraged to install this tool by running this command:
 
 .. code:: bash
 
@@ -166,7 +170,7 @@ encouraged to install this tool by running this commandd:
 Documentation
 -------------
 
-For building documentation, you can run the usual rules provided in the
+To build documentation, you can run the usual rules provided in the
 `Sphinx`_ Makefile:
 
 .. code:: bash
@@ -177,17 +181,17 @@ For building documentation, you can run the usual rules provided in the
    # In Windows environment
    .\doc\make.bat html && your_browser_name doc/html/index.html
 
-However, the recommended way of checking documentation integrity is using ``tox``:
+However, the recommended way of checking documentation integrity is to use ``tox``:
 
 .. code:: bash
 
    tox -e doc && your_browser_name .tox/doc_out/index.html
 
 
-Distributing
+Distribution
 ------------
 
-If you would like to create either source or wheel files, run these commands to
+If you would like to create source or wheel files, run these commands to
 install the building requirements and then execute the build module:
 
 .. code:: bash

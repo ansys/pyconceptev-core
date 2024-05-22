@@ -6,22 +6,22 @@
 .. include:: ../../README.rst
 
 
-PyConceptEV instructions
-------------------------
+PyConceptEV usage
+-----------------
 
 Install the library
 ^^^^^^^^^^^^^^^^^^^
 
-#. Clone the repository with this command:
+#. Clone the repository:
 
    .. code:: bash
 
       git clone https://github.com/ansys-internal/pyconceptev-core
 
-#. Install Poetry following your preferred route.
+#. Install Poetry using one of the `installation options <https://python-poetry.org/docs/#installation>`_
+   described in the Poetry documentation.
 
-   For example, to use :code:`pipx`, see `with pipx <https://python-poetry.org/docs/#installation>`_
-   in the Poetry documentation:
+   For example, to install with ``pipx``, run this command:
 
    .. code:: bash
 
@@ -43,7 +43,7 @@ Configure a session using an ``ENV`` file
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 You must create an ``ENV`` file to keep your password and other configurable data in.
-This file should look something like this:
+The file should look like this:
 
 .. code-block:: bash
 
@@ -84,12 +84,13 @@ the health check endpoint to check your connection.
 Understand the API
 ^^^^^^^^^^^^^^^^^^
 
-The `Ansys OnScale API documentation <https://conceptev.ansys.com/api/docs>`_
-shows you which verbs and which routes or paths are available and what inputs and outputs they have.
-You can use the verb functions created in this module to make things simpler.
+The `Ansys ConceptEV API documentation <https://conceptev.ansys.com/api/docs>`_
+shows you which verbs and which routes or paths are available and what inputs
+and outputs they have. You can use the verb functions in this API to make
+things simpler.
 
-To create a configuration, you must use the verb ``POST`` with the route ``/configurations`` and
-add the ``data`` from the schema:
+To create a configuration, you must use the verb ``POST`` with the route ``/configurations``
+and add the ``data`` object from the schema:
 
 .. code-block:: python
 
