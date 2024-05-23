@@ -1,3 +1,7 @@
 (?i)Ansys
 PyConceptEV
 pipx
+py
+Makefile
+isort
+pytest

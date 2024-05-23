@@ -1,6 +1,6 @@
 .. _ref_getting_started:
 
-Getting Started
+Getting started
 ###############
 
 Install in user mode
