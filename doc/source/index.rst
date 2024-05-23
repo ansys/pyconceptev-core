@@ -6,103 +6,42 @@
 .. include:: ../../README.rst
 
 
-PyConceptEV instructions
-------------------------
-
-Install the library
-^^^^^^^^^^^^^^^^^^^
-
-#. Clone the repository with this command:
-
-   .. code:: bash
-
-      git clone https://github.com/ansys-internal/pyconceptev-core
-
-#. Install Poetry following your preferred route.
-
-   For example, to use :code:`pipx`, see `with pipx <https://python-poetry.org/docs/#installation>`_
-   in the Poetry documentation:
-
-   .. code:: bash
-
-      pipx install poetry
-
-#. Install dependencies using Poetry:
-
-   .. code:: bash
-
-      poetry install
-
-#. Activate the Poetry environment:
-
-   .. code:: bash
-
-      poetry shell
-
-Configure a session using an ``ENV`` file
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-You must create an ``ENV`` file to keep your password and other configurable data in.
-This file should look something like this:
-
-.. code-block:: bash
-
-   CONCEPTEV_USERNAME = joe.blogs@my_work.com
-   CONCEPTEV_PASSWORD = sup3r_s3cr3t_passw0rd
-   OCM_URL = https://prod.portal.onscale.com/api
-   CONCEPTEV_URL = https://conceptev.ansys.com/api
+.. grid:: 1 2 2 2
 
 
-Get a token
-^^^^^^^^^^^
+    .. grid-item-card:: Getting started :material-regular:`directions_run`
+        :padding: 2 2 2 2
+        :link: getting_started
+        :link-type: doc
 
-Import the main module and use the :code:`get_token()` method to get a
-a random access string from the server.
+        Learn how to install the PyConceptEV in user mode and quickly
+        begin using it.
 
-.. code-block:: python
+    .. grid-item-card:: User guide :material-regular:`menu_book`
+        :padding: 2 2 2 2
+        :link: user_guide
+        :link-type: doc
 
-   import ansys.conceptev.core.main as pyconceptev
+        A place for examples and to get more information.
 
-   token = pyconceptev.get_token()
+    .. grid-item-card:: API reference :material-regular:`bookmark`
+        :padding: 2 2 2 2
+        :link: https://conceptev.ansys.com/api/docs
 
+    .. grid-item-card:: Contributing :material-regular:`group`
+        :padding: 2 2 2 2
+        :link: contributing
+        :link-type: doc
 
-Create a client
-^^^^^^^^^^^^^^^
+        Learn how to develop with and add to PyConceptEV.
 
-You must create a client that can access and talk to the Ansys ConceptEV API. You can use
-the health check endpoint to check your connection.
-
-.. code-block:: python
-
-   import ansys.conceptev.core.main as pyconceptev
-
-   with pyconceptev.get_http_client(token, concept_id) as client:
-       health = get(client, "/health")
-       print(health)
-
-
-Understand the API
-^^^^^^^^^^^^^^^^^^
-
-The `Ansys OnScale API documentation <https://conceptev.ansys.com/api/docs>`_
-shows you which verbs and which routes or paths are available and what inputs and outputs they have.
-You can use the verb functions created in this module to make things simpler.
-
-To create a configuration, you must use the verb ``POST`` with the route ``/configurations`` and
-add the ``data`` from the schema:
-
-.. code-block:: python
-
-   data = {
-       "name": "New Aero Config",
-       "drag_coefficient": 1,
-       "cross_sectional_area": 2,
-       "config_type": "aero",
-   }
-   pyconcetpev.post(client, "/configurations", data=data)
 
 .. toctree::
    :hidden:
    :maxdepth: 3
 
+   getting_started
+   user_guide
+   API Reference <https://www.conceptev.ansys.com/api/docs>
    changelog
+   contributing
