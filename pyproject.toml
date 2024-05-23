@@ -43,9 +43,9 @@ httpx = "^0.26.0"
 plotly = "^5.18.0"
 tox = "^4.12.1"
 pytest-cov = "^4.1.0"
+pre-commit = "^3.7.1"
 
 # Optional documentation dependencies
-pre-commit = "^3.7.1"
 [tool.poetry.group.doc]
 optional = true
 
