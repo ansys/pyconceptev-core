@@ -1,42 +1,20 @@
 .. _ref_contributing:
 
-Contributing
-###############
+Contribute
+##########
 
-
-Installation
-------------
-
-Two installation modes are provided: user and developer.
-
-Install in user mode
-^^^^^^^^^^^^^^^^^^^^
-
-Before installing PyConceptEV, make sure that you have the latest version
-of `pip`_ by running this command:
-
-.. code:: bash
-
-   python -m pip install -U pip
-
-Then, install PyConceptEV with this command:
-
-.. code:: bash
-
-   python -m pip pip install ansys-conceptev-core
-
-Install in developer mode
-^^^^^^^^^^^^^^^^^^^^^^^^^
-
-Installing PyConceptEV in developer mode allows
-you to modify the source and enhance it.
-
-**Note:** Overall guidance on contributing to a PyAnsys library appears in the
+Overall guidance on contributing to a PyAnsys library appears in the
 `Contributing <https://dev.docs.pyansys.com/how-to/contributing.html>`_ topic
 in the *PyAnsys developer's guide*. Ensure that you are thoroughly familiar
 with this guide before attempting to contribute to PyConceptEV.
 
-To install PyConceptEV in developer mode, perform these steps:
+The following contribution information is specific to PyConceptEV.
+
+Install in developer mode
+-------------------------
+
+Installing PyConceptEV in developer mode allows you to modify and enhance
+the source.
 
 #. Clone the repository and move into it:
 

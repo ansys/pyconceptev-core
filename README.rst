@@ -42,7 +42,48 @@ PyConceptEV
 Overview
 --------
 
-PyConceptEV is a Python client library for the `Ansys ConceptEV <https://www.ansys.com/products/electronics/ansys-concept-ev>`_  service,
-which provides a cloud-based design and simulation platform for the concept design
+PyConceptEV is a Python client library for the `Ansys ConceptEV <https://www.ansys.com/products/electronics/ansys-concept-ev>`_
+service, which provides a cloud-based design and simulation platform for the concept design
 of EV powertrains.
 
+Documentation and issues
+------------------------
+
+Documentation for the latest stable release of PyConceptEV is hosted
+at `PyConceptEV documentation <https://pyconceptev-core.docs.pyansys.com/version/stable/index.html>`_.
+
+The documentation has these sections:
+
+- `Getting started <https://pyconceptev-core.docs.pyansys.com/version/stable/getting_started/index.html>`_: Learn
+  how to install PyConceptEV in user mode and quickly begin using it.
+- `User guide <https://pyconceptev-core.docs.pyansys.com/version/stable/user_guide/index.html>`_: Learn how to
+  configure a PyConceptEV session, get a token, and create a client.
+- `API reference <pyconceptev-core.docs.pyansys.com/version/stable/api/index.html>`_: Understand how the
+  `Ansys ConceptEV API documentation <https://conceptev.ansys.com/api/docs>`_ provides the verb functions
+  for interacting programmatically with PyConcept EV.
+- `Contribute <pyconceptev-core.docs.pyansys.com/version/stable//contributing.html>`_: Learn how to
+  contribute to PyConceptEV codebase or documentation.
+
+In the upper right corner of the documentation's title bar, there is an option
+for switching from viewing the documentation for the latest stable release
+to viewing the documentation for the development version or previously
+released versions.
+
+On the `PyConceptEV Issues <https://github.com/ansys-internal/pyconceptev-core/issues>`_
+page, you can create issues to report bugs and request new features. On the
+`Discussions <https://discuss.ansys.com/>`_ page on the Ansys Developer portal,
+you can post questions, share ideas, and get community feedback.
+
+If you have general questions about the PyAnsys ecosystem, email
+`pyansys.core@ansys.com <pyansys.core@ansys.com>`_. If your
+question is specific to PyConceptEV, ask your question in an issue
+as described in the previous paragraph.
+
+License
+-------
+
+PyConceptEV is licensed under the `MIT License <https://github.com/ansys/ansys-tools-visualization-interface/blob/main/LICENSE>`_.
+
+PyConceptEV makes no commercial claim over Ansys whatsoever. This library adds a
+Python interface for the `Ansys ConceptEV <https://www.ansys.com/products/electronics/ansys-concept-ev>`_
+without changing the core behavior or license of the original Ansys software.
