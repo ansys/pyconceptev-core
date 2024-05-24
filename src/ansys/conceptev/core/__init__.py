@@ -19,7 +19,7 @@
 # LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
-"""Python wrapper for Ansys Conceptev core."""
+"""Python wrapper for the Ansys ConceptEV service."""
 
 try:
     import importlib.metadata as importlib_metadata

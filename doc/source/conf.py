@@ -48,8 +48,10 @@ extensions = [
     "numpydoc",
     "sphinx.ext.autodoc",
     "sphinx.ext.autosummary",
+    "sphinx.ext.imgconverter",
     "sphinx.ext.intersphinx",
     "sphinx_copybutton",
+    "sphinx_design",
 ]
 
 # Intersphinx mapping
@@ -78,7 +80,6 @@ numpydoc_validation_checks = {
     "RT02",  # The first line of the Returns section should contain only the
     # type, unless multiple values are being returned"
 }
-
 
 # static path
 html_static_path = ["_static"]

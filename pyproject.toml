@@ -10,8 +10,8 @@ version = "0.1.dev0"
 license = "MIT"
 authors = ["ANSYS, Inc. <pyansys.core@ansys.com>"]
 maintainers = ["ANSYS, Inc. <pyansys.core@ansys.com>"]
-repository = "https://github.com/TBD"
-documentation = "https://github.com/TBD"
+repository = "https://github.com/ansys/pyconceptev-core"
+documentation = "https://conceptev.core.docs.pyansys.com"
 readme = "README.rst"
 keywords = [
   "Ansys",
@@ -24,6 +24,9 @@ classifiers = [
     "Intended Audience :: Science/Research",
     "Operating System :: OS Independent",
     "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
 ]
 packages = [
     { include = "ansys", from = "src" },
@@ -40,6 +43,7 @@ httpx = "^0.26.0"
 plotly = "^5.18.0"
 tox = "^4.12.1"
 pytest-cov = "^4.1.0"
+pre-commit = "^3.7.1"
 
 # Optional documentation dependencies
 [tool.poetry.group.doc]
@@ -50,6 +54,7 @@ Sphinx = "^7.2.6"
 numpydoc = "^1.5.0"
 ansys-sphinx-theme = "^0.14.0"
 sphinx-copybutton = "^0.5.1"
+sphinx-design = "^0.6.0"
 
 # Optional testing dependencies
 [tool.poetry.group.tests]

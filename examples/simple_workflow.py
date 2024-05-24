@@ -43,6 +43,8 @@ os.environ["CONCEPTEV_PASSWORD"] = "sup3r_s3cr3t_passw0rd"
 # Various constant data
 DATADIR = Path(__file__).parents[0] / "resources"
 MOTOR_FILE_NAME = str(DATADIR.joinpath("e9.lab"))
+
+# Example data can be obtained from the schema sections of the API documentation.
 AERO_1 = {
     "name": "New Aero Config",
     "drag_coefficient": 0.3,

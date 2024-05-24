@@ -1,102 +1,50 @@
-..
-   Just reuse the root readme to avoid duplicating the documentation.
-   Provide any documentation specific to your online documentation
-   here.
+PyConceptEV documentation |version|
+===================================
 
-.. include:: ../../README.rst
+PyConceptEV is a Python client library for the `Ansys ConceptEV <https://www.ansys.com/products/electronics/ansys-concept-ev>`_
+service, which provides a cloud-based design and simulation platform for the concept design
+of EV powertrains.
 
+.. grid:: 1 2 2 2
 
-ConceptEV Specific Instructions
--------------------------------
+    .. grid-item-card:: Getting started :material-regular:`directions_run`
+        :padding: 2 2 2 2
+        :link: getting_started
+        :link-type: doc
 
-Install the library
-^^^^^^^^^^^^^^^^^^^
+        Learn how to install PyConceptEV in user mode and quickly
+        begin using it.
 
-#. Start by cloning this repository:
+    .. grid-item-card:: User guide :material-regular:`menu_book`
+        :padding: 2 2 2 2
+        :link: user_guide
+        :link-type: doc
 
-.. code:: bash
+        Learn how to configure a PyConceptEV session, get a token, and
+        create a client.
 
-   git clone https://github.com/ansys-internal/pyconceptev-core
+    .. grid-item-card:: API reference :material-regular:`bookmark`
+        :padding: 2 2 2 2
+        :link: api_ref
+        :link-type: doc
 
-#. Install poetry following your preferred route. See https://python-poetry.org/docs/#installation for example using :code:`pipx`:
+        Understand how the `Ansys ConceptEV API documentation <https://conceptev.ansys.com/api/docs>`_
+        provides the verb functions for interacting programmatically with PyConcept EV.
 
-.. code:: bash
+    .. grid-item-card:: Contributing :material-regular:`group`
+        :padding: 2 2 2 2
+        :link: contributing
+        :link-type: doc
 
-   pipx install poetry
+        Learn how to to contribute to the PyConceptEV codebase or documentation.
 
-#. Install dependencies using poetry:
-
-.. code:: bash
-
-   poetry install
-
-#. Activate the poetry environment:
-
-.. code:: bash
-
-   poetry shell
-
-Configure Session using .env file
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-You need to create a .env file to keep your password and other configurable data.
-This file should look something like this:
-
-.. code-block:: bash
-
-   CONCEPTEV_USERNAME = joe.blogs@my_work.com
-   CONCEPTEV_PASSWORD = sup3r_s3cr3t_passw0rd
-   OCM_URL = https://test.portal.onscale.com/api
-   CONCEPTEV_URL = https://dev-conceptev.awsansys3np.onscale.com/api
-
-
-Get a token
-^^^^^^^^^^^
-
-Import the app module and use :code:`get_token`. This should return a random string from the servers to get you access.
-
-.. code-block:: python
-
-   import ansys.conceptev.core.app as pyconceptev
-
-   token = pyconceptev.get_token()
-
-
-Create a client
-^^^^^^^^^^^^^^^
-
-You need to create a client that can access and talk to the API. You can use the health check API to check your connection.
-
-.. code-block:: python
-
-   import ansys.conceptev.core.main as pyconceptev
-
-   with pyconceptev.get_http_client(token, concept_id) as client:
-       health = get(client, "/health")
-       print(health)
-
-
-Understand the API
-^^^^^^^^^^^^^^^^^^
-
-Use the API documentation at https://dev-conceptev.awsansys3np.onscale.com/api/docs
-This shows you which verbs and which routes/paths are available and what inputs/outputs they have.
-You can use the verb functions created in this module to make things simpler.
-
-To create a configuration we need to use the verb `post` with route `/configurations` and add the `data` from the schema.
-
-.. code-block:: python
-
-   data = {
-       "name": "New Aero Config",
-       "drag_coefficient": 1,
-       "cross_sectional_area": 2,
-       "config_type": "aero",
-   }
-   pyconcetpev.post(client, "/configurations", data=data)
 
 .. toctree::
    :hidden:
    :maxdepth: 3
 
+   getting_started
+   user_guide
+   api_ref
    changelog
+   contributing

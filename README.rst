@@ -1,204 +1,89 @@
-Pyconceptev core
-================
-|pyansys| |MIT| |black|
+PyConceptEV
+===========
+|pyansys| |python| |MIT|
 
 .. |pyansys| image:: https://img.shields.io/badge/Py-Ansys-ffc107.svg?logo=data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAIAAACQkWg2AAABDklEQVQ4jWNgoDfg5mD8vE7q/3bpVyskbW0sMRUwofHD7Dh5OBkZGBgW7/3W2tZpa2tLQEOyOzeEsfumlK2tbVpaGj4N6jIs1lpsDAwMJ278sveMY2BgCA0NFRISwqkhyQ1q/Nyd3zg4OBgYGNjZ2ePi4rB5loGBhZnhxTLJ/9ulv26Q4uVk1NXV/f///////69du4Zdg78lx//t0v+3S88rFISInD59GqIH2esIJ8G9O2/XVwhjzpw5EAam1xkkBJn/bJX+v1365hxxuCAfH9+3b9/+////48cPuNehNsS7cDEzMTAwMMzb+Q2u4dOnT2vWrMHu9ZtzxP9vl/69RVpCkBlZ3N7enoDXBwEAAA+YYitOilMVAAAAAElFTkSuQmCC
    :target: https://docs.pyansys.com/
    :alt: PyAnsys
 
-.. |python| image:: https://img.shields.io/pypi/pyversions/ansys-conceptev-core?logo=pypi
-   :target: TBD
+.. |python| image:: https://img.shields.io/badge/python-3.9+-blue.svg
+   :target: https://www.python.org/downloads/
    :alt: Python
 
-.. |pypi| image:: https://img.shields.io/pypi/v/ansys-conceptev-core.svg?logo=python&logoColor=white
-   :target: TBD
-   :alt: PyPI
+.. .. |pypi| image:: https://img.shields.io/pypi/v/ansys-conceptev-core.svg?logo=python&logoColor=white
+..    :target: https://pypi.org/project/ansys-conceptev-core
+..    :alt: PyPI
 
-.. |downloads| image:: https://img.shields.io/pypi/dm/ansys-conceptev-core.svg
-   :target: TBD
-   :alt: PyPI Downloads
+.. .. |downloads| image:: https://img.shields.io/pypi/dm/ansys-conceptev-core.svg
+..    :target: https://pypi.org/project/ansys-conceptev-core/
+..    :alt: PyPI Downloads
 
-.. |codecov| image:: TBD
-   :target: TBD
-   :alt: Codecov
+.. .. |codecov| image:: https://codecov.io/gh/ansys/pyconceptev-core/graph/badge.svg?token=UZIC7XT5WE
+..    :target: https://codecov.io/gh/ansys/pyconceptev-core
+..    :alt: Codecov
 
-.. |GH-CI| image:: TBD
-   :target: TBD
-   :alt: GH-CI
+.. .. |GH-CI| image:: https://github.com/ansys/pyconceptev-core/actions/workflows/ci_cd.yml/badge.svg
+..    :target: https://github.com/ansys/pyconceptev-core/actions/workflows/ci_cd.yml
+..    :alt: GH-CI
 
 .. |MIT| image:: https://img.shields.io/badge/License-MIT-yellow.svg
    :target: https://opensource.org/licenses/MIT
    :alt: MIT
 
-.. |black| image:: https://img.shields.io/badge/code%20style-black-000000.svg?style=flat
-   :target: https://github.com/psf/black
-   :alt: Black
+.. .. |black| image:: https://img.shields.io/badge/code%20style-black-000000.svg?style=flat
+..    :target: https://github.com/psf/black
+..    :alt: Black
 
-.. |pre-commit| image:: TBD
-   :target: TBD
-   :alt: pre-commit.ci
+.. .. |pre-commit| image:: https://results.pre-commit.ci/badge/github/ansys/pyconceptev-core/main.svg
+..    :target: https://results.pre-commit.ci/latest/github/ansys/pyconceptev-core/main
+..    :alt: pre-commit.ci
 
-.. contents::
 
 Overview
 --------
 
-PyAnsys ConceptEV is a Python client library for the Ansys ConceptEV service.
+PyConceptEV is a Python client library for the `Ansys ConceptEV <https://www.ansys.com/products/electronics/ansys-concept-ev>`_
+service, which provides a cloud-based design and simulation platform for the concept design
+of EV powertrains.
 
+Documentation and issues
+------------------------
 
-How to install
---------------
+Documentation for the latest stable release of PyConceptEV is hosted
+at `PyConceptEV documentation <https://pyconceptev-core.docs.pyansys.com/version/stable/index.html>`_.
 
-At least two installation modes are provided: user and developer.
+The documentation has these sections:
 
-For users
-^^^^^^^^^
+- `Getting started <https://pyconceptev-core.docs.pyansys.com/version/stable/getting_started/index.html>`_: Learn
+  how to install PyConceptEV in user mode and quickly begin using it.
+- `User guide <https://pyconceptev-core.docs.pyansys.com/version/stable/user_guide/index.html>`_: Learn how to
+  configure a PyConceptEV session, get a token, and create a client.
+- `API reference <pyconceptev-core.docs.pyansys.com/version/stable/api/index.html>`_: Understand how the
+  `Ansys ConceptEV API documentation <https://conceptev.ansys.com/api/docs>`_ provides the verb functions
+  for interacting programmatically with PyConcept EV.
+- `Contribute <pyconceptev-core.docs.pyansys.com/version/stable//contributing.html>`_: Learn how to
+  contribute to PyConceptEV codebase or documentation.
 
-In order to install Pyconceptev core, make sure you
-have the latest version of `pip`_. To do so, run:
+In the upper right corner of the documentation's title bar, there is an option
+for switching from viewing the documentation for the latest stable release
+to viewing the documentation for the development version or previously
+released versions.
 
-.. code:: bash
+On the `PyConceptEV Issues <https://github.com/ansys-internal/pyconceptev-core/issues>`_
+page, you can create issues to report bugs and request new features. On the
+`Discussions <https://discuss.ansys.com/>`_ page on the Ansys Developer portal,
+you can post questions, share ideas, and get community feedback.
 
-   python -m pip install -U pip
+If you have general questions about the PyAnsys ecosystem, email
+`pyansys.core@ansys.com <pyansys.core@ansys.com>`_. If your
+question is specific to PyConceptEV, ask your question in an issue
+as described in the previous paragraph.
 
-Then, you can simply execute:
+License
+-------
 
-.. code:: bash
+PyConceptEV is licensed under the `MIT License <https://github.com/ansys/ansys-tools-visualization-interface/blob/main/LICENSE>`_.
 
-   python -m pip pip install ansys-conceptev-core
-
-For developers
-^^^^^^^^^^^^^^
-
-Installing Pyconceptev core in developer mode allows
-you to modify the source and enhance it.
-
-Before contributing to the project, please refer to the `PyAnsys Developer's guide`_. You will
-need to follow these steps:
-
-#. Start by cloning this repository and move into it:
-
-.. code:: bash
-
-   git clone https://github.com/ansys-internal/pyconceptev-core
-   cd pyconceptev-core
-
-#. Create a fresh-clean Python environment and activate it:
-
-.. code:: bash
-
-   # Create a virtual environment
-   python -m venv .venv
-
-   # Activate it in a POSIX system
-   source .venv/bin/activate
-
-   # Activate it in Windows CMD environment
-   .venv\Scripts\activate.bat
-
-   # Activate it in Windows Powershell
-   .venv\Scripts\Activate.ps1
-
-#. Make sure you have the latest required build system and doc, testing, and CI tools:
-
-.. code:: bash
-
-   python -m pip install -U pip poetry tox
-
-#. Install the project in editable mode:
-
-.. code:: bash
-
-   poetry install
-
-#. Finally, verify your development installation by running:
-
-.. code:: bash
-
-   tox
-
-
-How to testing
---------------
-
-This project takes advantage of `tox`_. This tool allows to automate common
-development tasks (similar to Makefile) but it is oriented towards Python
-development.
-
-Using tox
-^^^^^^^^^
-
-As Makefile has rules, `tox`_ has environments. In fact, the tool creates its
-own virtual environment so anything being tested is isolated from the project in
-order to guarantee project's integrity. The following environments commands are provided:
-
-- **tox -e style**: will check for coding style quality.
-- **tox -e py**: checks for unit tests.
-- **tox -e py-coverage**: checks for unit testing and code coverage.
-- **tox -e doc**: checks for documentation building process.
-
-
-Raw testing
-^^^^^^^^^^^
-
-If required, you can always call the style commands (`black`_, `isort`_,
-`flake8`_...) or unit testing ones (`pytest`_) from the command line. However,
-this does not guarantee that your project is being tested in an isolated
-environment, which is the reason why tools like `tox`_ exist.
-
-
-A note on pre-commit
-^^^^^^^^^^^^^^^^^^^^
-
-The style checks take advantage of `pre-commit`_. Developers are not forced but
-encouraged to install this tool via:
-
-.. code:: bash
-
-   python -m pip install pre-commit && pre-commit install
-
-
-Documentation
--------------
-
-For building documentation, you can either run the usual rules provided in the
-`Sphinx`_ Makefile, such as:
-
-.. code:: bash
-
-   # In Linux environment
-   make -C doc/ html && your_browser_name doc/html/index.html
-
-   # In Windows environment
-   .\doc\make.bat html && your_browser_name doc/html/index.html
-
-However, the recommended way of checking documentation integrity is using:
-
-.. code:: bash
-
-   tox -e doc && your_browser_name .tox/doc_out/index.html
-
-
-Distributing
-------------
-
-If you would like to create either source or wheel files, start by installing
-the building requirements and then executing the build module:
-
-.. code:: bash
-
-   poetry install --with build
-   python -m build
-   python -m twine check dist/*
-
-
-.. LINKS AND REFERENCES
-.. _black: https://github.com/psf/black
-.. _flake8: https://flake8.pycqa.org/en/latest/
-.. _isort: https://github.com/PyCQA/isort
-.. _pip: https://pypi.org/project/pip/
-.. _pre-commit: https://pre-commit.com/
-.. _PyAnsys Developer's guide: https://dev.docs.pyansys.com/
-.. _pytest: https://docs.pytest.org/en/stable/
-.. _Sphinx: https://www.sphinx-doc.org/en/master/
-.. _tox: https://tox.wiki/
+PyConceptEV makes no commercial claim over Ansys whatsoever. This library adds a
+Python interface for the `Ansys ConceptEV <https://www.ansys.com/products/electronics/ansys-concept-ev>`_
+without changing the core behavior or license of the original Ansys software.
