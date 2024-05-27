@@ -26,7 +26,7 @@ import datetime
 from json import JSONDecodeError
 import os
 import time
-from typing import Literal, Optional
+from typing import Literal
 
 import dotenv
 import httpx
@@ -94,7 +94,7 @@ def process_response(response) -> dict:
 
 
 def get(
-    client: httpx.Client, router: Router, id: Optional[str] = None, params: Optional[dict] = None
+    client: httpx.Client, router: Router, id: str | None = None, params: dict | None = None
 ) -> dict:
     """Send a GET request to the base client.
 
