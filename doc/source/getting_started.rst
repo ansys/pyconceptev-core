@@ -23,15 +23,3 @@ Then, install PyConceptEV with this command:
 .. code:: bash
 
    python -m pip pip install ansys-conceptev-core
-
-
-Install the library
-^^^^^^^^^^^^^^^^^^^
-
-#. Clone the repository:
-
-   .. code:: bash
-
-      git clone https://github.com/ansys-internal/pyconceptev-core
-
-
