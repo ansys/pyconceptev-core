@@ -46,5 +46,5 @@ of EV powertrains.
    getting_started
    user_guide
    api_ref
-   changelog
    contributing
+   changelog
