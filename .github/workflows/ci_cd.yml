@@ -14,8 +14,9 @@ env:
   MEILISEARCH_API_KEY: ${{ secrets.MEILISEARCH_API_KEY }}
   MEILISEARCH_HOST_URL: ${{ vars.MEILISEARCH_HOST_URL }}
   MEILISEARCH_PUBLIC_API_KEY: ${{ secrets.MEILISEARCH_PUBLIC_API_KEY }}
-  # LIBRARY_NAME: 'ansys-conceptev-core'
-  # LIBRARY_NAMESPACE: 'ansys.conceptev.core'
+  ON_CI: True
+  CONCEPTEV_USERNAME: ${{ secrets.CONCEPTEV_USERNAME }}
+  CONCEPTEV_PASSWORD: ${{ secrets.CONCEPTEV_PASSWORD }}
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
@@ -132,7 +133,16 @@ jobs:
     runs-on: ubuntu-latest
     needs: [doc-style]
     steps:
-      - uses: ansys/actions/doc-build@v6
+      - name: Install dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y pandoc
+
+      - name: Verify Pandoc installation
+        run: pandoc --version
+
+      - name: Build documentation
+        uses: ansys/actions/doc-build@v6
         with:
           python-version: ${{ env.MAIN_PYTHON_VERSION }}
           check-links: false

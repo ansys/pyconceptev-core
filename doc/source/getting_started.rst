@@ -28,7 +28,7 @@ Then, install PyConceptEV with this command:
 Install the library
 ^^^^^^^^^^^^^^^^^^^
 
-#. Clone the repository:
+Clone the repository:
 
    .. code:: bash
 

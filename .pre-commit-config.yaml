@@ -25,14 +25,14 @@ repos:
   rev: v2.2.6
   hooks:
   - id: codespell
-    args: ["--ignore-words", "doc/styles/config/vocabularies/ANSYS/accept.txt", "-w"]
+    args: ["--ignore-words", "doc/styles/config/vocabularies/ANSYS/accept.txt", "-w", "--skip=poetry.lock"]
 
 - repo: https://github.com/pycqa/pydocstyle
   rev: 6.3.0
   hooks:
   - id: pydocstyle
     additional_dependencies: [tomli]
-    exclude: "tests/"
+    exclude: "^(tests|examples)"
 
 - repo: https://github.com/pre-commit/pre-commit-hooks
   rev: v4.4.0

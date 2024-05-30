@@ -20,8 +20,15 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-"""This example shows basic usage of PyConceptEV Core."""
+# # Simple workflow
+#
+# This example shows basic usage of PyConceptEV Core.
 
+# ## Perform required imports
+#
+# Perform required imports.
+
+# +
 import datetime
 import os
 from pathlib import Path
@@ -30,21 +37,37 @@ import plotly.graph_objects as go
 
 from ansys.conceptev.core import app
 
-# Setup required environment variables
+# -
+
+# ## Setup
+
+# Setup required environment variables.
+
+# +
 os.environ["CONCEPTEV_URL"] = "https://conceptev.ansys.com/api/"
 os.environ["OCM_URL"] = "https://prod.portal.onscale.com/api"
-os.environ["CONCEPTEV_USERNAME"] = "joe.blogs@my_work.com"
-os.environ["CONCEPTEV_PASSWORD"] = "sup3r_s3cr3t_passw0rd"
 
+# Set environment variables for ConceptEV username and password if they don't exist!
+if os.environ.get("CONCEPTEV_USERNAME") is None:
+    os.environ["CONCEPTEV_USERNAME"] = "joe.blogs@my_work.com"
+if os.environ.get("CONCEPTEV_PASSWORD") is None:
+    os.environ["CONCEPTEV_PASSWORD"] = "sup3r_s3cr3t_passw0rd"
+# -
+
+# +
 # Uncomment the following lines of code if you prefer to use local .env file
+#
 # import dotenv
 # dotenv.load_dotenv()
+# -
 
-# Various constant data
-DATADIR = Path(__file__).parents[0] / "resources"
-MOTOR_FILE_NAME = str(DATADIR.joinpath("e9.lab"))
-
+# ## Define example data
+#
+# ### Various constant data
+#
 # Example data can be obtained from the schema sections of the API documentation.
+
+MOTOR_FILE_NAME = Path("resources") / "e9.lab"
 AERO_1 = {
     "name": "New Aero Config",
     "drag_coefficient": 0.3,
@@ -88,14 +111,18 @@ BATTERY = {
     "voltage_min": 300,
 }
 
+# ### Changing data
+
 # Motor data
 motor_data = {"name": "e9", "component_type": "MotorLabID", "inverter_losses_included": False}
 
-# Get a token from OCM
-token = app.get_token()
-print(token)
+# ## Use API client for the Ansys ConceptEV service
 
-# Create a new project
+# ### Get a token from OCM
+
+token = app.get_token()
+
+# ### Create a new project
 
 with app.get_http_client(token) as client:
     health = app.get(client, "/health")
@@ -116,9 +143,13 @@ with app.get_http_client(token) as client:
     )
     print(f"ID of the created project: {project['id']}")
 
+# ### Perform basic operations
+#
 # Perform basic operations on the design instance associated to the new project
 
+# +
 design_instance_id = project["design_instance_id"]
+
 with app.get_http_client(token, design_instance_id) as client:
 
     # Create configurations
@@ -202,3 +233,4 @@ with app.get_http_client(token, design_instance_id) as client:
 
     fig = go.Figure(data=go.Scatter(x=x, y=y))
     fig.show()
+# -
