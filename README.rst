@@ -59,8 +59,8 @@ The documentation has these sections:
 - `User guide <https://pyconceptev-core.docs.pyansys.com/version/stable/user_guide/index.html>`_: Learn how to
   configure a PyConceptEV session, get a token, and create a client.
 - `API reference <pyconceptev-core.docs.pyansys.com/version/stable/api/index.html>`_: Understand how the
-  `Ansys ConceptEV API documentation <https://conceptev.ansys.com/api/docs>`_ provides the verb functions
-  for interacting programmatically with PyConcept EV.
+  `Ansys ConceptEV API documentation <https://conceptev.ansys.com/api/docs>`_: Provides for interacting
+  programmatically with PyConcept EV.
 - `Contribute <pyconceptev-core.docs.pyansys.com/version/stable//contributing.html>`_: Learn how to
   contribute to PyConceptEV codebase or documentation.
 
