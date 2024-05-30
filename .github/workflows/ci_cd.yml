@@ -14,8 +14,6 @@ env:
   MEILISEARCH_API_KEY: ${{ secrets.MEILISEARCH_API_KEY }}
   MEILISEARCH_HOST_URL: ${{ vars.MEILISEARCH_HOST_URL }}
   MEILISEARCH_PUBLIC_API_KEY: ${{ secrets.MEILISEARCH_PUBLIC_API_KEY }}
-  CONCEPTEV_USERNAME: ${{ secrets.CONCEPTEV_USERNAME }}
-  CONCEPTEV_PASSWORD: ${{ secrets.CONCEPTEV_PASSWORD }}
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
@@ -141,6 +139,9 @@ jobs:
         run: pandoc --version
 
       - name: Build documentation
+        env:
+          CONCEPTEV_USERNAME: ${{ secrets.CONCEPTEV_USERNAME }}
+          CONCEPTEV_PASSWORD: ${{ secrets.CONCEPTEV_PASSWORD }}
         uses: ansys/actions/doc-build@v6
         with:
           python-version: ${{ env.MAIN_PYTHON_VERSION }}
