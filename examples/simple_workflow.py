@@ -165,7 +165,8 @@ with app.get_http_client(token, design_instance_id) as client:
 
     # Read all aero configurations
     configurations = app.get(client, "/configurations", params={"config_type": "aero"})
-    print(f"List of configurations: {configurations}\n")
+    # Uncomment to print configurations
+    # print(f"List of configurations: {configurations}\n")
 
     # Get a specific aero configuration
     aero = app.get(client, "/configurations", id=created_aero["id"])
