@@ -39,6 +39,7 @@ python-dotenv = "^1.0.0"
 httpx = "^0.26.0"
 
 # Common packages for test and examples
+recommonmark = "^0.7.1"
 [tool.poetry.group.dev.dependencies]
 plotly = "^5.18.0"
 tox = "^4.12.1"

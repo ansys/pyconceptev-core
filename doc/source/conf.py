@@ -55,6 +55,7 @@ html_theme_options = {
 extensions = [
     "nbsphinx",
     "numpydoc",
+    "recommonmark",
     "sphinx.ext.autodoc",
     "sphinx.ext.autosummary",
     "sphinx.ext.imgconverter",
