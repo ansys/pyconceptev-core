@@ -63,33 +63,37 @@ if os.environ.get("CONCEPTEV_PASSWORD") is None:
 
 # ## Define example data
 #
-# ### Various constant data
-#
 # Example data can be obtained from the schema sections of the API documentation.
 
+# +
 MOTOR_FILE_NAME = Path("resources") / "e9.lab"
+
 AERO_1 = {
     "name": "New Aero Config",
     "drag_coefficient": 0.3,
     "cross_sectional_area": 2,
     "config_type": "aero",
 }
+
 AERO_2 = {
     "name": "Second Aero Configuration",
     "drag_coefficient": 0.6,
     "cross_sectional_area": 3,
     "config_type": "aero",
 }
+
 MASS = {
     "name": "New Mass Config",
     "mass": 3000,
     "config_type": "mass",
 }
+
 WHEEL = {
     "name": "New Wheel Config",
     "rolling_radius": 0.3,
     "config_type": "wheel",
 }
+
 TRANSMISSION = {
     "gear_ratios": [5],
     "headline_efficiencies": [0.95],
@@ -100,6 +104,7 @@ TRANSMISSION = {
     "windage_ratios": [40],
     "component_type": "TransmissionLossCoefficients",
 }
+
 BATTERY = {
     "capacity": 86400000,
     "charge_acceptance_limit": 0,
@@ -111,10 +116,8 @@ BATTERY = {
     "voltage_min": 300,
 }
 
-# ### Changing data
-
-# Motor data
 motor_data = {"name": "e9", "component_type": "MotorLabID", "inverter_losses_included": False}
+# -
 
 # ## Use API client for the Ansys ConceptEV service
 
@@ -223,6 +226,7 @@ with app.get_http_client(token, design_instance_id) as client:
     }
     created_requirement = app.post(client, "requirements", data=requirement)
     print(f"Created requirement: {created_requirement}")
+# -
 
 # Submit a job and show the result
 
