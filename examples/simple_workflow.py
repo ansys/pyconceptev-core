@@ -126,17 +126,19 @@ token = app.get_token()
 
 with app.get_http_client(token) as client:
     health = app.get(client, "/health")
-    print(f"API is healthy: {health}")
+    print(f"API is healthy: {health}\n")
 
     concepts = app.get(client, "/concepts")
-    print(f"List of concepts: {concepts}")
+    print(f"List of concepts: {concepts}\n")
 
     accounts = app.get_account_ids(token)
-    print(f"Account IDs: {accounts}")
+    # Uncomment to print accounts IDs
+    # print(f"Account IDs: {accounts}\n")
 
     account_id = accounts[os.environ["CONCEPTEV_USERNAME"]]
     hpc_id = app.get_default_hpc(token, account_id)
-    print(f"HPC ID: {hpc_id}")
+    # Uncomment to print HPC ID
+    # print(f"HPC ID: {hpc_id}\n")
 
     project = app.create_new_project(
         client, account_id, hpc_id, f"New Project +{datetime.datetime.now()}"
@@ -160,11 +162,11 @@ with app.get_http_client(token, design_instance_id) as client:
 
     # Read all aero configurations
     configurations = app.get(client, "/configurations", params={"config_type": "aero"})
-    print(f"List of configurations: {configurations}")
+    print(f"List of configurations: {configurations}\n")
 
     # Get a specific aero configuration
     aero = app.get(client, "/configurations", id=created_aero["id"])
-    print(f"First created areo configuration: {aero}")
+    print(f"First created areo configuration: {aero}\n")
 
     # Create component
     created_transmission = app.post(client, "/components", data=TRANSMISSION)
@@ -175,7 +177,7 @@ with app.get_http_client(token, design_instance_id) as client:
     motor_data["max_speed"] = motor_loss_map[1]
 
     created_motor = app.post(client, "/components", data=motor_data)
-    print(f"Created motor: {created_motor}")
+    print(f"Created motor: {created_motor}\n")
 
     # Extend client timeout to get loss map from the motor
     client.timeout = 2000
@@ -206,7 +208,7 @@ with app.get_http_client(token, design_instance_id) as client:
         "battery_id": created_battery["id"],
     }
     created_arch = app.post(client, "/architectures", data=architecture)
-    print(f"Created architecture: {created_arch}")
+    print(f"Created architecture: {created_arch}\n")
 
     # Create a requirement
     requirement = {
@@ -222,6 +224,10 @@ with app.get_http_client(token, design_instance_id) as client:
     created_requirement = app.post(client, "requirements", data=requirement)
     print(f"Created requirement: {created_requirement}")
 
+# Submit a job and show the result
+
+with app.get_http_client(token, design_instance_id) as client:
+
     # Create and submit a job
     concept = app.get(client, "/concepts", id=design_instance_id, params={"populated": True})
     job_info = app.create_submit_job(client, concept, account_id, hpc_id)
@@ -233,4 +239,3 @@ with app.get_http_client(token, design_instance_id) as client:
 
     fig = go.Figure(data=go.Scatter(x=x, y=y))
     fig.show()
-# -

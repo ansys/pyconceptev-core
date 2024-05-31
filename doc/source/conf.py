@@ -122,7 +122,7 @@ master_doc = "index"
 nbsphinx_execute = "always"
 nbsphinx_allow_errors = False
 nbsphinx_thumbnails = {
-    "examples/simple_workflow": "_static/thumbnails/101_getting_started.png",
+    "examples/simple_workflow": "_static/thumbnails/simple_workflow.png",
 }
 nbsphinx_custom_formats = {
     ".py": ["jupytext.reads", {"fmt": ""}],
