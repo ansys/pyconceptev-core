@@ -39,7 +39,6 @@ python-dotenv = "^1.0.0"
 httpx = "^0.26.0"
 
 # Common packages for test and examples
-recommonmark = "^0.7.1"
 [tool.poetry.group.dev.dependencies]
 plotly = "^5.18.0"
 tox = "^4.12.1"
@@ -60,6 +59,7 @@ nbconvert = "^7.16.4"
 nbsphinx = "^0.9.3"
 numpydoc = "^1.5.0"
 pypandoc = "^1.13"
+recommonmark = "^0.7.1"
 Sphinx = "^7.2.6"
 sphinx-autobuild = "^2024.4.16"
 sphinx-autodoc-typehints = "^2.1.0"
