@@ -37,7 +37,7 @@ html_context = {
 
 # specify the location of your github repo
 html_theme_options = {
-    "github_url": "https://github.com/pyconceptev-core",
+    "github_url": "https://github.com/ansys/pyconceptev-core",
     "use_edit_page_button": True,
     "show_prev_next": False,
     "show_breadcrumbs": True,
