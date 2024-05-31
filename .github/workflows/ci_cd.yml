@@ -113,7 +113,7 @@ jobs:
         uses: actions/upload-artifact@v4
         if: env.MAIN_PYTHON_VERSION == matrix.python-version
         with:
-          name: coverage-tests-{{ '${{ matrix.os }}' }}
+          name: coverage-tests-${{ matrix.os }}
           path: .cov
           retention-days: 7
 
@@ -121,7 +121,7 @@ jobs:
         uses: actions/upload-artifact@v4
         if: env.MAIN_PYTHON_VERSION == matrix.python-version
         with:
-          name: coverage-file-tests-{{ '${{ matrix.os }}' }}
+          name: coverage-file-tests-${{ matrix.os }}
           path: .coverage
           retention-days: 7
 
