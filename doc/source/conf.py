@@ -128,6 +128,9 @@ nbsphinx_custom_formats = {
     ".py": ["jupytext.reads", {"fmt": ""}],
 }
 
+# Activate fontawesome icons in LaTeX
+sd_fontawesome_latex = True
+
 linkcheck_exclude_documents = ["index"]
 linkcheck_ignore = [
     r"https://download.ansys.com/",
