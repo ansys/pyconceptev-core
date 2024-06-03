@@ -9,6 +9,15 @@ This document contains the release notes for the project.
 
 .. towncrier release notes start
 
+`0.1.1 <https://github.com/ansys/pyconceptev-core/releases/tag/v0.1.1>`_ - 2024-06-03
+=====================================================================================
+
+Changed
+^^^^^^^
+
+- CHORE: update CHANGELOG for v0.1.0 `#46 <https://github.com/ansys/pyconceptev-core/pull/46>`_
+- CI: Fix release jobs `#47 <https://github.com/ansys/pyconceptev-core/pull/47>`_
+
 `0.1.0 <https://github.com/ansys/pyconceptev-core/releases/tag/v0.1.0>`_ - 2024-06-03
 =====================================================================================
 
