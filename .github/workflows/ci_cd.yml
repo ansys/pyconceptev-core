@@ -22,7 +22,7 @@ concurrency:
 jobs:
 
   update-changelog:
-    name: "Update CHANGELOG for new tag"
+    name: Update CHANGELOG for new tag
     if: github.event_name == 'push' && contains(github.ref, 'refs/tags')
     runs-on: ubuntu-latest
     permissions:
