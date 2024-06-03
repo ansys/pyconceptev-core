@@ -236,9 +236,9 @@ jobs:
   #       if: github.event_name == 'push' && contains(github.ref, 'refs/tags')
   #       uses: ansys/actions/release-pypi-public@v6
   #       with:
-  #         library-name: {{ '${{ env.DOCUMENTATION_CNAME }}' }}
+  #         library-name: {{ ${{ env.PACKAGE_NAME }} }}
   #         twine-username: "__token__"
-  #         twine-token: {{ '${{ secrets.PYPI_TOKEN }}' }}
+  #         twine-token: {{ ${{ secrets.PYPI_TOKEN }} }}
 
   release-github:
     name: Release to GitHub
@@ -249,4 +249,4 @@ jobs:
         if: github.event_name == 'push' && contains(github.ref, 'refs/tags')
         uses: ansys/actions/release-github@v6
         with:
-          library-name: ${{ env.DOCUMENTATION_CNAME }}
+          library-name: ${{ env.PACKAGE_NAME }}
