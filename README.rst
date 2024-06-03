@@ -61,7 +61,7 @@ The documentation has these sections:
 - `API reference <conceptev.core.docs.pyansys.com/version/stable/api/index.html>`_: Understand how the
   `Ansys ConceptEV API documentation <https://conceptev.ansys.com/api/docs>`_: Provides for interacting
   programmatically with PyConcept EV.
-- `Contribute <conceptev.core.docs.pyansys.com/version/stable//contributing.html>`_: Learn how to
+- `Contribute <conceptev.core.docs.pyansys.com/version/stable/contributing.html>`_: Learn how to
   contribute to PyConceptEV codebase or documentation.
 
 In the upper right corner of the documentation's title bar, there is an option
