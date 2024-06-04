@@ -50,7 +50,7 @@ Documentation and issues
 ------------------------
 
 Documentation for the latest stable release of PyConceptEV is hosted
-at `PyConceptEV documentation <https://pyconceptev-core.docs.pyansys.com/version/stable/index.html>`_.
+at `PyConceptEV documentation <https://conceptev.core.docs.pyansys.com/>`_.
 
 The documentation has these sections:
 
