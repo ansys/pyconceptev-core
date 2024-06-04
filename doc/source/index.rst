@@ -31,7 +31,7 @@ of EV powertrains.
         Understand how the `Ansys ConceptEV API documentation <https://conceptev.ansys.com/api/docs>`_
         provides for interacting programmatically with PyConcept EV.
 
-    .. grid-item-card:: Examples :fa:`scroll`
+    .. grid-item-card:: Examples :material-regular:`play_arrow`
         :padding: 2 2 2 2
         :link: examples/index
         :link-type: doc

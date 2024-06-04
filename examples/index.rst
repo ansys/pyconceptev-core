@@ -1,16 +1,15 @@
 Examples
 ########
 
-These examples demonstrate usage of PyConcept EV.
+This section shows how to use PyConceptEV.
 
-PyConcept EV examples
----------------------
-These examples demonstrate basic operations you can perform
-with PyConcept EV.
+Basic usage examples
+--------------------
+These examples show how to use PyConcentEV to perform basic operations.
 
 .. nbgallery::
 
     simple_workflow.py
 
 .. note::
-    Examples require having access to https://prod.portal.onscale.com/api
+    Examples require access to `Onscale <https://prod.portal.onscale.com/api>`_.
