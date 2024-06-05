@@ -55,7 +55,7 @@ if os.environ.get("CONCEPTEV_PASSWORD") is None:
 # -
 
 # +
-# Uncomment the following lines of code if you want to use a local ``ENV`` file.
+# Uncomment the following lines of code if you want to use a local ``.env`` file.
 #
 # import dotenv
 # dotenv.load_dotenv()
