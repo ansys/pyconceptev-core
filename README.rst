@@ -50,7 +50,7 @@ Documentation and issues
 ------------------------
 
 Documentation for the latest stable release of PyConceptEV is hosted
-at `PyConceptEV documentation <https://pyconceptev-core.docs.pyansys.com/version/stable/index.html>`_.
+at `PyConceptEV documentation <https://conceptev.core.docs.pyansys.com/>`_.
 
 The documentation has these sections:
 
@@ -59,10 +59,12 @@ The documentation has these sections:
 - `User guide <https://conceptev.core.docs.pyansys.com/version/stable/user_guide/index.html>`_: Learn how to
   configure a PyConceptEV session, get a token, and create a client.
 - `API reference <conceptev.core.docs.pyansys.com/version/stable/api/index.html>`_: Understand how the
-  `Ansys ConceptEV API documentation <https://conceptev.ansys.com/api/docs>`_: Provides for interacting
+  `Ansys ConceptEV API documentation <https://conceptev.ansys.com/api/docs>`_ provides for interacting
   programmatically with PyConcept EV.
+- `Examples <https://conceptev.core.docs.pyansys.com/version/stable/examples/index.html>`_: Explore examples
+  that show how to use PyConceptEV.
 - `Contribute <conceptev.core.docs.pyansys.com/version/stable/contributing.html>`_: Learn how to
-  contribute to PyConceptEV codebase or documentation.
+  contribute to the PyConceptEV codebase or documentation.
 
 In the upper right corner of the documentation's title bar, there is an option
 for switching from viewing the documentation for the latest stable release
@@ -85,5 +87,5 @@ License
 PyConceptEV is licensed under the `MIT License <https://github.com/ansys/pyconceptev-core/blob/main/LICENSE>`_.
 
 PyConceptEV makes no commercial claim over Ansys whatsoever. This library adds a
-Python interface for the `Ansys ConceptEV <https://www.ansys.com/products/electronics/ansys-concept-ev>`_
+Python interface for `Ansys ConceptEV <https://www.ansys.com/products/electronics/ansys-concept-ev>`_
 without changing the core behavior or license of the original Ansys software.

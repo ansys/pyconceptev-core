@@ -22,7 +22,7 @@
 
 # # Simple workflow
 #
-# This example shows basic usage of PyConceptEV Core.
+# This example shows how to use PyConcentEV to perform basic operations.
 
 # ## Perform required imports
 #
@@ -39,9 +39,9 @@ from ansys.conceptev.core import app
 
 # -
 
-# ## Setup
+# ## Set up environment variables
 
-# Setup required environment variables.
+# Set up required environment variables.
 
 # +
 os.environ["CONCEPTEV_URL"] = "https://conceptev.ansys.com/api/"
@@ -55,7 +55,7 @@ if os.environ.get("CONCEPTEV_PASSWORD") is None:
 # -
 
 # +
-# Uncomment the following lines of code if you prefer to use local .env file
+# Uncomment the following lines of code if you want to use a local ``.env`` file.
 #
 # import dotenv
 # dotenv.load_dotenv()
@@ -63,7 +63,7 @@ if os.environ.get("CONCEPTEV_PASSWORD") is None:
 
 # ## Define example data
 #
-# Example data can be obtained from the schema sections of the API documentation.
+# You can obtain example data from the schema sections of the API documentation.
 
 # +
 MOTOR_FILE_NAME = Path("resources") / "e9.lab"
@@ -125,7 +125,7 @@ motor_data = {"name": "e9", "component_type": "MotorLabID", "inverter_losses_inc
 
 token = app.get_token()
 
-# ### Create a new project
+# ### Create a project
 
 with app.get_http_client(token) as client:
     health = app.get(client, "/health")
@@ -150,7 +150,7 @@ with app.get_http_client(token) as client:
 
 # ### Perform basic operations
 #
-# Perform basic operations on the design instance associated to the new project
+# Perform basic operations on the design instance associated with the new project.
 
 # +
 design_instance_id = project["design_instance_id"]
@@ -229,7 +229,7 @@ with app.get_http_client(token, design_instance_id) as client:
     print(f"Created requirement: {created_requirement}")
 # -
 
-# Submit a job and show the result
+# Submit a job and show the result.
 
 with app.get_http_client(token, design_instance_id) as client:
 
