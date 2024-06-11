@@ -10,7 +10,7 @@ version = "0.2.dev0"
 license = "MIT"
 authors = ["ANSYS, Inc. <pyansys.core@ansys.com>"]
 maintainers = ["ANSYS, Inc. <pyansys.core@ansys.com>"]
-repository = "https://github.com/ansys/pyconceptev-core"
+repository = "https://github.com/ansys/pyconceptev"
 documentation = "https://conceptev.core.docs.pyansys.com"
 readme = "README.rst"
 keywords = [
@@ -107,8 +107,8 @@ directory = "doc/changelog.d"
 filename = "doc/source/changelog.rst"
 start_string = ".. towncrier release notes start\n"
 template = "doc/changelog.d/changelog_template.jinja"
-title_format = "`{version} <https://github.com/ansys/pyconceptev-core/releases/tag/v{version}>`_ - {project_date}"
-issue_format = "`#{issue} <https://github.com/ansys/pyconceptev-core/pull/{issue}>`_"
+title_format = "`{version} <https://github.com/ansys/pyconceptev/releases/tag/v{version}>`_ - {project_date}"
+issue_format = "`#{issue} <https://github.com/ansys/pyconceptev/pull/{issue}>`_"
 
 [[tool.towncrier.type]]
 directory = "added"
