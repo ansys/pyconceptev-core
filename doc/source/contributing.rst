@@ -20,7 +20,7 @@ the source.
 
    .. code:: bash
 
-      git clone https://github.com/ansys-internal/pyconceptev-core
+      git clone https://github.com/ansys/pyconceptev-core
       cd pyconceptev-core
 
 #. Create a fresh-clean Python environment and activate it:
