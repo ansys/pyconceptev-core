@@ -5,7 +5,7 @@ build-backend = "poetry.core.masonry.api"
 [tool.poetry]
 # Check https://python-poetry.org/docs/pyproject/ for all available sections
 name = "ansys-conceptev-core"
-description = "A python wrapper for Ansys Conceptev core"
+description = "A Python wrapper for Ansys Conceptev core"
 version = "0.2.dev0"
 license = "MIT"
 authors = ["ANSYS, Inc. <pyansys.core@ansys.com>"]
