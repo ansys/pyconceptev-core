@@ -9,6 +9,35 @@ This document contains the release notes for the project.
 
 .. towncrier release notes start
 
+`0.1.3 <https://github.com/ansys/pyconceptev/releases/tag/v0.1.3>`_ - 2024-06-12
+================================================================================
+
+Changed
+^^^^^^^
+
+- chore: update CHANGELOG for v0.1.2 `#53 <https://github.com/ansys/pyconceptev/pull/53>`_
+- CI: Use Trusted Publisher to release package `#59 <https://github.com/ansys/pyconceptev/pull/59>`_
+- DOCS: Use ansys org instead of internal `#61 <https://github.com/ansys/pyconceptev/pull/61>`_
+- DOC: Fix typo in pyproject.toml `#62 <https://github.com/ansys/pyconceptev/pull/62>`_
+- CHORE: Use new repository name `#63 <https://github.com/ansys/pyconceptev/pull/63>`_
+- CI: Refact release job `#66 <https://github.com/ansys/pyconceptev/pull/66>`_
+
+
+Dependencies
+^^^^^^^^^^^^
+
+- CHORE: Bump pytest-cov from 4.1.0 to 5.0.0 `#38 <https://github.com/ansys/pyconceptev/pull/38>`_
+- CHORE: Bump sphinx-autodoc-typehints from 2.1.0 to 2.1.1 `#56 <https://github.com/ansys/pyconceptev/pull/56>`_
+- CHORE: Bump pytest from 7.4.4 to 8.2.2 `#57 <https://github.com/ansys/pyconceptev/pull/57>`_
+- CHORE: Bump tox from 4.15.0 to 4.15.1 `#58 <https://github.com/ansys/pyconceptev/pull/58>`_
+- CHORE: Bump jupyterlab from 4.2.1 to 4.2.2 `#60 <https://github.com/ansys/pyconceptev/pull/60>`_
+
+
+Miscellaneous
+^^^^^^^^^^^^^
+
+- DOCS: Minor doc edits based on doc rendering `#55 <https://github.com/ansys/pyconceptev/pull/55>`_
+
 `0.1.2 <https://github.com/ansys/pyconceptev/releases/tag/v0.1.2>`_ - 2024-06-04
 =====================================================================================
 
