@@ -181,7 +181,7 @@ jobs:
         uses: ansys/actions/doc-deploy-index@v6
         with:
           cname: ${{ env.DOCUMENTATION_CNAME }}/version/dev
-          index-name: pyconceptev-core-vdev
+          index-name: pyconceptev-vdev
           host-url: ${{ env.MEILISEARCH_HOST_URL }}
           api-key: ${{ env.MEILISEARCH_API_KEY }}
           python-version: ${{ env.MAIN_PYTHON_VERSION }}
@@ -222,28 +222,32 @@ jobs:
         uses: ansys/actions/doc-deploy-index@v6
         with:
           cname: ${{ env.DOCUMENTATION_CNAME }}/version/${{ env.VERSION }}
-          index-name: pyconceptev-core-v${{ env.VERSION_MEILI }}
+          index-name: pyconceptev-v${{ env.VERSION_MEILI }}
           host-url: ${{ env.MEILISEARCH_HOST_URL }}
           api-key: ${{ env.MEILISEARCH_API_KEY }}
           python-version: ${{ env.MAIN_PYTHON_VERSION }}
 
-  # release-pypi-public:
-  #   name: Release to the public PyPI repository
-  #   runs-on: ubuntu-latest
-  #   needs: [package, update-changelog]
-  #   steps:
-  #     - name: "Release to the public PyPI repository"
-  #       if: github.event_name == 'push' && contains(github.ref, 'refs/tags')
-  #       uses: ansys/actions/release-pypi-public@v6
-  #       with:
-  #         library-name: {{ ${{ env.PACKAGE_NAME }} }}
-  #         twine-username: "__token__"
-  #         twine-token: {{ ${{ secrets.PYPI_TOKEN }} }}
+  release-pypi-public:
+    name: Release to the public PyPI repository
+    needs: [package, update-changelog]
+    runs-on: ubuntu-latest
+    # Specifying a GitHub environment is optional, but strongly encouraged
+    environment: release
+    permissions:
+      id-token: write
+      contents: write
+    steps:
+      - name: "Release to the public PyPI repository"
+        if: github.event_name == 'push' && contains(github.ref, 'refs/tags')
+        uses: ansys/actions/release-pypi-public@v6
+        with:
+          library-name: ${{ env.PACKAGE_NAME }}
+          use-trusted-publisher: true
 
   release-github:
     name: Release to GitHub
-    runs-on: ubuntu-latest
     needs: [doc-build, package, update-changelog]
+    runs-on: ubuntu-latest
     steps:
       - name: "Release to GitHub"
         if: github.event_name == 'push' && contains(github.ref, 'refs/tags')
