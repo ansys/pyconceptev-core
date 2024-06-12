@@ -189,7 +189,7 @@ jobs:
   doc-deploy-stable:
     name: Deploy stable documentation
     runs-on: ubuntu-latest
-    needs: [doc-build, package]
+    needs: [doc-build, package, release]
     if: github.event_name == 'push' && contains(github.ref, 'refs/tags')
     steps:
       - name: Deploy the stable documentation
@@ -227,9 +227,10 @@ jobs:
           api-key: ${{ env.MEILISEARCH_API_KEY }}
           python-version: ${{ env.MAIN_PYTHON_VERSION }}
 
-  release-pypi-public:
+  release:
     name: Release to the public PyPI repository
-    needs: [package, update-changelog]
+    if: github.event_name == 'push' && contains(github.ref, 'refs/tags')
+    needs: [doc-build, package, update-changelog]
     runs-on: ubuntu-latest
     # Specifying a GitHub environment is optional, but strongly encouraged
     environment: release
@@ -237,20 +238,13 @@ jobs:
       id-token: write
       contents: write
     steps:
-      - name: "Release to the public PyPI repository"
-        if: github.event_name == 'push' && contains(github.ref, 'refs/tags')
+      - name: Release to the public PyPI repository
         uses: ansys/actions/release-pypi-public@v6
         with:
           library-name: ${{ env.PACKAGE_NAME }}
           use-trusted-publisher: true
 
-  release-github:
-    name: Release to GitHub
-    needs: [doc-build, package, update-changelog]
-    runs-on: ubuntu-latest
-    steps:
-      - name: "Release to GitHub"
-        if: github.event_name == 'push' && contains(github.ref, 'refs/tags')
+      - name: Release to GitHub
         uses: ansys/actions/release-github@v6
         with:
           library-name: ${{ env.PACKAGE_NAME }}
