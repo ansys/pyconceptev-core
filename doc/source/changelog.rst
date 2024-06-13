@@ -9,6 +9,15 @@ This document contains the release notes for the project.
 
 .. towncrier release notes start
 
+`0.1.4 <https://github.com/ansys/pyconceptev/releases/tag/v0.1.4>`_ - 2024-06-13
+================================================================================
+
+Changed
+^^^^^^^
+
+- chore: update CHANGELOG for v0.1.3 `#67 <https://github.com/ansys/pyconceptev/pull/67>`_
+- DOCS: Update URLs to match new CNAME `#68 <https://github.com/ansys/pyconceptev/pull/68>`_
+
 `0.1.3 <https://github.com/ansys/pyconceptev/releases/tag/v0.1.3>`_ - 2024-06-12
 ================================================================================
 
