@@ -11,7 +11,7 @@ license = "MIT"
 authors = ["ANSYS, Inc. <pyansys.core@ansys.com>"]
 maintainers = ["ANSYS, Inc. <pyansys.core@ansys.com>"]
 repository = "https://github.com/ansys/pyconceptev"
-documentation = "https://conceptev.core.docs.pyansys.com"
+documentation = "https://conceptev.docs.pyansys.com"
 readme = "README.rst"
 keywords = [
   "Ansys",

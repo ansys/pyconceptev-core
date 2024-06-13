@@ -21,7 +21,7 @@ project = "ansys-conceptev-core"
 copyright = f"(c) 2023-{datetime.today().year} ANSYS, Inc. and/or its affiliates."
 author = "ANSYS, Inc."
 release = version = __version__
-cname = os.getenv("DOCUMENTATION_CNAME", "conceptev.core.docs.pyansys.com")
+cname = os.getenv("DOCUMENTATION_CNAME", "conceptev.docs.pyansys.com")
 switcher_version = get_version_match(__version__)
 
 # Select desired logo, theme, and declare the html title

@@ -10,7 +10,7 @@ on:
 env:
   MAIN_PYTHON_VERSION: '3.11'
   PACKAGE_NAME: 'ansys-conceptev-core'
-  DOCUMENTATION_CNAME: 'conceptev.core.docs.pyansys.com'
+  DOCUMENTATION_CNAME: 'conceptev.docs.pyansys.com'
   MEILISEARCH_API_KEY: ${{ secrets.MEILISEARCH_API_KEY }}
   MEILISEARCH_HOST_URL: ${{ vars.MEILISEARCH_HOST_URL }}
   MEILISEARCH_PUBLIC_API_KEY: ${{ secrets.MEILISEARCH_PUBLIC_API_KEY }}

@@ -50,20 +50,20 @@ Documentation and issues
 ------------------------
 
 Documentation for the latest stable release of PyConceptEV is hosted
-at `PyConceptEV documentation <https://conceptev.core.docs.pyansys.com/>`_.
+at `PyConceptEV documentation <https://conceptev.docs.pyansys.com/>`_.
 
 The documentation has these sections:
 
-- `Getting started <https://conceptev.core.docs.pyansys.com/version/stable/getting_started/index.html>`_: Learn
+- `Getting started <https://conceptev.docs.pyansys.com/version/stable/getting_started/index.html>`_: Learn
   how to install PyConceptEV in user mode and quickly begin using it.
-- `User guide <https://conceptev.core.docs.pyansys.com/version/stable/user_guide/index.html>`_: Learn how to
+- `User guide <https://conceptev.docs.pyansys.com/version/stable/user_guide/index.html>`_: Learn how to
   configure a PyConceptEV session, get a token, and create a client.
-- `API reference <conceptev.core.docs.pyansys.com/version/stable/api/index.html>`_: Understand how the
+- `API reference <conceptev.docs.pyansys.com/version/stable/api/index.html>`_: Understand how the
   `Ansys ConceptEV API documentation <https://conceptev.ansys.com/api/docs>`_ provides for interacting
   programmatically with PyConcept EV.
-- `Examples <https://conceptev.core.docs.pyansys.com/version/stable/examples/index.html>`_: Explore examples
+- `Examples <https://conceptev.docs.pyansys.com/version/stable/examples/index.html>`_: Explore examples
   that show how to use PyConceptEV.
-- `Contribute <conceptev.core.docs.pyansys.com/version/stable/contributing.html>`_: Learn how to
+- `Contribute <conceptev.docs.pyansys.com/version/stable/contributing.html>`_: Learn how to
   contribute to the PyConceptEV codebase or documentation.
 
 In the upper right corner of the documentation's title bar, there is an option
